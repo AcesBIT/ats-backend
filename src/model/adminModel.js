@@ -39,6 +39,20 @@ const schoolSchema=new Schema({
     pincode: {
         type: String,
         required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    camDetails: {
+        userName: {
+            required: true,
+            type: String
+        },
+        password: {
+            type: String,
+            required: true
+        }
     }
 });
 

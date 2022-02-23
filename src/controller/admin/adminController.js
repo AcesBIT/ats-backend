@@ -2,6 +2,7 @@ const {User,School}=require("../../model/adminModel.js");
 const md5= require("md5");
 const nodemailer = require('nodemailer');
 
+// Admin Registration
 exports.postAdminRegister=async(req,res)=>{
     const {userName, password} = req.body;
 
@@ -29,6 +30,7 @@ exports.postAdminRegister=async(req,res)=>{
     }
 }
 
+// Admin Login
 exports.postAdminLogin=async (req,res)=>{
     const {userName, password} = req.body;
     const user = await User.findOne({userName});
@@ -57,7 +59,7 @@ exports.postAdminLogin=async (req,res)=>{
         });
     }
 }
-
+// School Registration for Admin
 exports.postSchoolRegister= async (req,res)=>{
     const {schoolName,phone,emailId,address,pincode} = req.body;
     const schoolData= await School.findOne({schoolName: schoolName, emailId: emailId});
@@ -77,13 +79,21 @@ exports.postSchoolRegister= async (req,res)=>{
         }else{
             schoolId=pincode+Number(samePincodeSchoolList.length+1);
         }
+        let password=getPass();
+        let camUserName='CAM'+schoolId;
+        let campassword=getPass();
         const newSchool=new School({
             schoolName: schoolName,
             schoolId: schoolId,
             emailId: emailId,
             phone: phone,
             address: address,
-            pincode: pincode
+            pincode: pincode,
+            password: md5(password),
+            camDetails: {
+                userName: camUserName,
+                password: md5(campassword)
+            }
         });
         await newSchool.save((err)=>{
             if(err){
@@ -103,8 +113,10 @@ exports.postSchoolRegister= async (req,res)=>{
                     text: `${schoolName} has been registered to our Website, 
                     School Login credentials are:
                     School-ID: ${schoolId}
-                    School-Username: ${emailId}
-                    School-Password: sj,dh,nfbkd,nfj`
+                    School-UserName: ${emailId}
+                    School-Password: ${password}
+                    School-CameraUserName: ${camUserName}
+                    School-CameraPassword: ${campassword}`
                 };
             
                 transporter.sendMail(mailOptions, (error, info)=>{
@@ -123,4 +135,19 @@ exports.postSchoolRegister= async (req,res)=>{
             }    
         });
     }
+}
+
+
+// Random Password Generation
+function getPass(){
+    let password="";
+    let charList="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    for(var i=0;i<5;i++){
+        let randomNumber = Math.trunc(Math.random() * 52);
+        password=password+charList.charAt(randomNumber);
+    }
+    for(var i=0;i<3;i++){
+        password=password+Math.trunc(Math.random() * 9)+1;
+    }
+    return password+'@';
 }
