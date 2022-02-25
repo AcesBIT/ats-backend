@@ -5,7 +5,9 @@ const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const { process_params } = require("express/lib/router");
 const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src/controller/admin/adminController");
+const { postOfficialLogin, postStudentRegister , postTeacherRegister} = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
+const { isAuth, isValidSchool } = require("./src/controller/common/auth");
 const { isAuth } = require("./src/controller/common/auth");
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
 require("dotenv").config();
@@ -49,6 +51,10 @@ app.post('/admin/login', postAdminLogin);
 app.post('/admin/register', postAdminRegister);
 app.post('/admin/schoolregister', isAuth, postSchoolRegister);
 
+//School Officials End Points Are Here----------------------------------->
+app.post('/official/login', postOfficialLogin);
+app.post('/official/studentRegister', isValidSchool, postStudentRegister);
+app.post('/official/teacherRegister', isValidSchool, postTeacherRegister);
 
 // Camera End Points Are Here---------------------------------->
 app.post('/camera/login', postCameraLogin);
@@ -56,7 +62,9 @@ app.post('/camera/attendance', isAuth, postCameraAttendance);
 
 // Common End Points Are Here
 app.post('/logout', logoutUser);
+
+
 // Listen Port Starts-----Here
-app.listen(PORT, () => {
+app.listen(PORT, ()=>{
     console.log(`Server is Running on port ${PORT}`);
 });
