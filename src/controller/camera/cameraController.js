@@ -26,9 +26,11 @@ exports.postCameraLogin = async (req, res) => {
     } else if (user.password == md5(password)) {
         req.session.isAuth = true;
         req.session.userName = userName;
+        const studentList= await Student.find({schoolId: user.schoolId});
         res.status(200).json({
             message: "Camera Login Successful",
-            session: req.session
+            session: req.session,
+            studentList: studentList
         });
     } else {
         res.status(404).json({
