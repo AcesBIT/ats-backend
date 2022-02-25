@@ -8,6 +8,8 @@ const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src
 const { postOfficialLogin, postStudentRegister , postTeacherRegister} = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
 const { isAuth, isValidSchool } = require("./src/controller/common/auth");
+const { isAuth } = require("./src/controller/common/auth");
+const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -17,12 +19,12 @@ const app = express();
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(`mongodb+srv://admin-aces:${pass}@cluster0.buvru.mongodb.net/managementDB`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then((res)=>{
+}).then((res) => {
     console.log("MongoDB connected");
 });
 
@@ -39,22 +41,27 @@ app.use(session({
 }));
 
 
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.send('Server is Running Copyright @sourashispaul @siddhantsrivastava');
 });
 
 
 // Admin End Points Are Here----------------------------------->
 app.post('/admin/login', postAdminLogin);
-app.post('/logout', logoutUser);
 app.post('/admin/register', postAdminRegister);
 app.post('/admin/schoolregister', isAuth, postSchoolRegister);
-
 
 //School Officials End Points Are Here----------------------------------->
 app.post('/official/login', postOfficialLogin);
 app.post('/official/studentRegister', isValidSchool, postStudentRegister);
 app.post('/official/teacherRegister', isValidSchool, postTeacherRegister);
+
+// Camera End Points Are Here---------------------------------->
+app.post('/camera/login', postCameraLogin);
+app.post('/camera/attendance', isAuth, postCameraAttendance);
+
+// Common End Points Are Here
+app.post('/logout', logoutUser);
 
 
 // Listen Port Starts-----Here

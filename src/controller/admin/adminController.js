@@ -5,7 +5,15 @@ const nodemailer = require('nodemailer');
 // Admin Registration
 exports.postAdminRegister=async(req,res)=>{
     const {userName, password} = req.body;
-
+    if(!userName || !password){
+        res.status(400).json({
+            detail:{
+                title: "Invalid Data",
+                message: "All required Data is not receving"
+            }
+        });
+        return
+    }
     let user = await User.findOne({userName});
 
     if(user){
@@ -33,6 +41,15 @@ exports.postAdminRegister=async(req,res)=>{
 // Admin Login
 exports.postAdminLogin=async (req,res)=>{
     const {userName, password} = req.body;
+    if(!userName || !password){
+        res.status(400).json({
+            detail:{
+                title: "Invalid Data",
+                message: "All required Data is not receving"
+            }
+        });
+        return
+    }
     const user = await User.findOne({userName});
     if(!user){
         res.status(404).json({
@@ -61,7 +78,32 @@ exports.postAdminLogin=async (req,res)=>{
 }
 // School Registration for Admin
 exports.postSchoolRegister= async (req,res)=>{
+    let missingVal="";
     const {schoolName,phone,emailId,address,pincode} = req.body;
+    if(!schoolName || !phone || !emailId || !address || !pincode){
+        if(!schoolName){
+            missingVal+="School Name";
+        }
+        if(!phone){
+            missingVal+=" Phone";
+        }
+        if(!emailId){
+            missingVal+=" Email Id";
+        }
+        if(!address){
+            missingVal+=" Address";
+        }
+        if(!pincode){
+            missingVal+=" Pincode";
+        }
+        res.status(400).json({
+            detail:{
+                title: "Invaild Data",
+                message: `All required Data is not receving, Missing Values are ${missingVal}`
+            }
+        });
+        return
+    }
     const schoolData= await School.findOne({schoolName: schoolName, emailId: emailId});
     if(schoolData){
         res.status(409).json({
