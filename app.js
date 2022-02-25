@@ -5,8 +5,9 @@ const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const { process_params } = require("express/lib/router");
 const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src/controller/admin/adminController");
+const { postOfficialLogin, postStudentRegister , postTeacherRegister} = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
-const { isAuth } = require("./src/controller/common/auth");
+const { isAuth, isValidSchool } = require("./src/controller/common/auth");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -49,155 +50,14 @@ app.post('/logout', logoutUser);
 app.post('/admin/register', postAdminRegister);
 app.post('/admin/schoolregister', isAuth, postSchoolRegister);
 
+
+//School Officials End Points Are Here----------------------------------->
+app.post('/official/login', postOfficialLogin);
+app.post('/official/studentRegister', isValidSchool, postStudentRegister);
+app.post('/official/teacherRegister', isValidSchool, postTeacherRegister);
+
+
 // Listen Port Starts-----Here
 app.listen(PORT, ()=>{
     console.log(`Server is Running on port ${PORT}`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.post('/school', auth.isAuth, async (req,res)=>{
-//     const schoolData = {
-//         username:"1234",
-//         password:"1234",
-//         schoolId:"1234",
-//         schoolName: req.body.schoolname,
-//         emailId: req.body.email,
-//         phone: req.body.phone,
-//         address: req.body.address,
-//         district: req.body.district,
-//         schoolType: req.body.type
-//     }
-
-//     const username = req.session.username;
-//     let user = await User.findOne({username});
-
-//     if(!user){
-//         res.send("User not found, something went wrong");
-//     }else{       
-//         //autogenerate school username, password and school ID is still pending... 
-//         const newSchool = new School({
-//             schoolName : req.body.schoolname,
-//             emailId: req.body.email,
-//             phone: req.body.phone,
-//             address: req.body.address,
-//             district: req.body.district,
-//             schoolType: req.body.type
-//         });
-//         await newSchool.save(function(err){
-//             if(err){
-//                 res.send("some error occured");
-//             }else{
-//                 res.send(`New school added with details - ${username}`);
-//             }
-//         });
-//         user.Schools.push(schoolData);
-//         user.save();
-
-
-
-// });
-// const schoolSchema = new mongoose.Schema({
-//     username: String,
-//     password: String,
-//     schoolId: String,
-//     schoolName : String,
-//     emailId: String,
-//     phone: String,
-//     address: String,
-//     district: String,
-//     schoolType: String,
-//     registeredTeacher : [
-//         {
-//             username : String,
-//             password : String,
-//             name : String,
-//             email : String,
-//             phone : String
-//         }
-//     ],
-//     class1:[
-//         {
-//             name: String,
-//             standard: String,
-//             sec: String,
-//             UID: String,          //${SchoolID}+${class}+${studenData.length}
-//             dob: String,
-//             email: String,
-//             image: String,
-//             address: String,
-//             phone: String,
-//             guardianName: String,
-//             // Attendance: [
-                
-//             // ]
-//         }
-//     ],    
-
-// });
-  

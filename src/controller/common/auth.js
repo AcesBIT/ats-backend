@@ -10,3 +10,16 @@ exports.isAuth = (req, res, next)=>{
         });
     }
 }
+
+exports.isValidSchool = (req, res, next)=>{
+    if(req.session.isValidSchool){
+        next();
+    }else{
+        res.status(404).json({
+            detail: {
+                title: "Error!",
+                message: "School is not active in Session, Login to Access this."
+            }
+        });
+    }
+}
