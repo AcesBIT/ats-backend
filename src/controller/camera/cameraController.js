@@ -1,5 +1,6 @@
 const { Attendance } = require("../../model/attendanceModel");
 const { School } = require("../../model/adminModel");
+const { Student } =require("../../model/studentModel");
 const md5 = require("md5");
 
 
@@ -15,7 +16,7 @@ exports.postCameraLogin = async (req, res) => {
         });
         return
     }
-    const user = await School.findOne({ camDetails: { userName: userName } });
+    const user = await School.findOne({ "camDetails.userName" : userName  });
     if (!user) {
         res.status(404).json({
             detail: {
@@ -23,10 +24,28 @@ exports.postCameraLogin = async (req, res) => {
                 message: "User is Not Available"
             }
         });
-    } else if (user.password == md5(password)) {
+    } else if ((user.camDetails.password) == md5(password)) {
         req.session.isAuth = true;
         req.session.userName = userName;
         const studentList= await Student.find({schoolId: user.schoolId});
+        let today=new Date();
+        let cDate,cMonth,cYear;
+        cDate=today.getDate();
+        cMonth=String(Number(today.getMonth()+1));
+        if(cMonth.length<2){
+            cMonth="0"+cMonth;
+        }
+        cYear=today.getFullYear();
+        today=cYear+"-"+cMonth+"-"+cDate;
+        const dateAlreadyRegistered= await Attendance.findOne({date: today, schoolId: user.schoolId});
+        if(!dateAlreadyRegistered){
+            const newDateAttendance= new Attendance({
+                date: today,
+                schoolId: user.schoolId,
+                studentList: []
+            });
+            await newDateAttendance.save();
+        }
         res.status(200).json({
             message: "Camera Login Successful",
             session: req.session,
@@ -60,7 +79,6 @@ exports.postCameraAttendance = async (req, res) => {
         });
         return
     } else {
-        let flag = 0;
         const studentAttendance = await Attendance.findOne({ date: date, schoolId: schoolId });
         let sList = studentAttendance.studentList;
         const isPresent = isStudentAlreadyPresent(sList, studentData);
@@ -71,22 +89,18 @@ exports.postCameraAttendance = async (req, res) => {
         } else {
             sList.push(studentData);
             try {
-                await Attendance.findByIdAndUpdate({ _id: studentAttendance._id }, { studentList: sList }, (err) => {
-                    if (err) {
-                        res.status(503).json({
-                            detail: {
-                                title: "Server is Not Responding",
-                                message: "New Attendance Record Store Failed"
-                            }
-                        });
-                    } else {
-                        res.status(201).json({
-                            message: `Attendance Given--Student ID ${studentData.UID}`
-                        });
-                    }
+                await Attendance.updateOne({ _id: studentAttendance._id }, { studentList: sList });
+                res.status(201).json({
+                    message: `Attendance Given--Student ID ${studentData.uID}`
                 });
             } catch (e) {
                 console.log(e);
+                res.status(503).json({
+                    detail: {
+                        title: "Server is Not Responding",
+                        message: "New Attendance Record Store Failed"
+                    }
+                });
             }
         }
     }
@@ -94,7 +108,7 @@ exports.postCameraAttendance = async (req, res) => {
 
 function isStudentAlreadyPresent(studentList, currentStudent) {
     for (let i = 0; i < studentList.length; i++) {
-        if (studentList[i].UID == currentStudent.UID) {
+        if (studentList[i].uID == currentStudent.uID) {
             return true;
         }
     }

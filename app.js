@@ -8,7 +8,6 @@ const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src
 const { postOfficialLogin, postStudentRegister , postTeacherRegister} = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
 const { isAuth, isValidSchool } = require("./src/controller/common/auth");
-const { isAuth } = require("./src/controller/common/auth");
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
 require("dotenv").config();
 

@@ -12,7 +12,7 @@ const attendanceRecordSchema = new Schema({
         required: true
     },
     studentList: {
-        type: Array,
+        type: [],
         required: true
     }
 });
