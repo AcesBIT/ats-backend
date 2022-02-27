@@ -33,6 +33,17 @@ exports.postOfficialLogin=async (req,res)=>{
 }
 
 exports.postStudentRegister=async(req, res)=>{
+    
+    if(!req.body.name || !req.body.class || !req.body.year || !req.body.dob || !req.body.email || !req.body.image || !req.body.address || !req.body.phone || !req.body.guardianName){
+        res.status(400).json({
+            detail:{
+                title: "Invalid Data",
+                message: "All required Data is not receving"
+            }
+        });
+        return
+    }
+    
     const {email} = req.body;
     
     let student = await Student.findOne({email: email});
@@ -45,7 +56,9 @@ exports.postStudentRegister=async(req, res)=>{
         //logic for UID generation
         //--------------------------------->
         let totalStudent = await Student.find({yOA: req.body.year});
-        const totalSize = (totalStudent.length < 10) ? "00" + totalStudent.length : (totalStudent.length < 100 && totalStudent.length > 9) ? "0" + totalStudent.length: totalStudent.length;
+        totalLength = totalStudent.length;
+        totalLength++;
+        const totalSize = (totalLength < 10) ? "00" + (totalLength) : (totalLength < 100 && totalLength > 9) ? "0" + totalLength: totalLength;
         const userId = req.session.schoolId + req.body.year[2] + req.body.year[3] + totalSize;
         //--------------------------------->
 
