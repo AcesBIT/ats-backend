@@ -182,7 +182,13 @@ exports.updateStudentClass=async(req, res)=>{
     }
     
     data.forEach (async element => {
-        await Student.updateOne({uID: element}, {class: req.body.class});
+        try {
+            await Student.updateOne({uID: element}, {class: req.body.class});
+        } catch (error) {
+            res.status(503).json({
+                message: "Some error occured"
+            })
+        }
     });
 
     res.status(201).json({
