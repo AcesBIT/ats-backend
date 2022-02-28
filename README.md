@@ -89,7 +89,7 @@
   {
   "name" : String,
   "email" : String,
-  "phone" : int
+  "phone" : String
   }
 - Response 201
   {
