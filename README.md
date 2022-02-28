@@ -123,10 +123,38 @@
     "image": String,
     "address": String,
     "phone": String,
-    "guardianName": String,
+    "guardianName": String
     }
   ]
   }
+
+# Camera Post Attendance
+
+    /camera/attendance
+- Request-Post
+  {
+  "date" : String,
+  "schoolId" : String,
+  "studentData" : {
+    "schoolId": String,
+    "name": String,
+    "class": String,
+    "yOA": String,
+    "uID": String,
+    "dob": String,
+    "email": String,
+    "image": String,
+    "address": String,
+    "phone": String,
+    "guardianName": String
+  }
+  }
+- Response 201
+  {
+  "message" : "Attendance Given--StudentId"
+  }
+
+
 
 # For Every Error
 
