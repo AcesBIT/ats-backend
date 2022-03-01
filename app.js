@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const { process_params } = require("express/lib/router");
@@ -19,6 +20,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 mongoose.connect(`mongodb+srv://admin-aces:${pass}@cluster0.buvru.mongodb.net/managementDB`, {
     useNewUrlParser: true,
@@ -65,6 +67,6 @@ app.post('/logout', logoutUser);
 
 
 // Listen Port Starts-----Here
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is Running on port ${PORT}`);
 });
