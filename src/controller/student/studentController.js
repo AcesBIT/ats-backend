@@ -24,10 +24,12 @@ exports.postStudentLogin = async (req, res) => {
         req.session.isAuth = true;
         req.session.userName = userName;
         let schoolId = "";
-        for (let i = 0; i < 6; i++) {
-            schoolId += userName;
+        for (let i = 0; i < 8; i++) {
+            schoolId += userName.charAt(i);
         }
+        console.log(schoolId);
         let schoolData = await Attendance.find({ schoolId: schoolId });
+        console.log(schoolData);
         let studentPresentDays = checkNumber(schoolData, userName);
         let schoolDay = schoolData.length;
         let percentage = calculatePercentage(schoolDay, studentPresentDays);
@@ -51,12 +53,13 @@ exports.postStudentLogin = async (req, res) => {
 }
 
 function checkNumber(schoolData, uID) {
+    //console.log(schoolData);
     let noOfDays = 0;
     let i, n = schoolData.length;
     for (i = 0; i < n; i++) {
-        let sList = schoolData[i].studetList;
+        let sList = schoolData[i].studentList;
         for (let j = 0; j < sList.length; j++) {
-            if (sList[i].uID == uID) {
+            if (sList[j].uID == uID) {
                 noOfDays++;
             }
         }
