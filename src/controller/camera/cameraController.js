@@ -30,8 +30,11 @@ exports.postCameraLogin = async (req, res) => {
         const studentList= await Student.find({schoolId: user.schoolId});
         let today=new Date();
         let cDate,cMonth,cYear;
-        cDate=today.getDate();
+        cDate=String(today.getDate());
         cMonth=String(Number(today.getMonth()+1));
+        if(cDate.length<2){
+            cDate="0"+cDate;
+        }
         if(cMonth.length<2){
             cMonth="0"+cMonth;
         }
