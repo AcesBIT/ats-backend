@@ -168,3 +168,32 @@ exports.postTeacherRegister=async(req, res)=>{
         });
     }
 }
+
+exports.updateStudentClass=async(req, res)=>{
+    const data = req.body.id;
+    if(!data || !req.body.class){
+        res.status(400).json({
+            detail:{
+                title: "Incomplete Data",
+                message: "All required Data is not receving"
+            }
+        });
+        return
+    }
+    
+    data.forEach (async element => {
+        try {
+            await Student.updateOne({uID: element}, {class: req.body.class});
+        } catch (error) {
+            res.status(503).json({
+                message: "Some error occured"
+            })
+        }
+    });
+
+    res.status(201).json({
+        message: `Successfully Updated all students`
+    })
+    
+    
+}
