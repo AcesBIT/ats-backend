@@ -99,7 +99,7 @@ exports.postStudentRegister=async(req, res)=>{
 
 exports.postTeacherRegister=async(req, res)=>{
     
-    if(!req.body.userName || !req.body.password || !req.body.phone){
+    if(!req.body.email || !req.body.name || !req.body.phone){
         res.status(400).json({
             detail:{
                 title: "Incomplete Data",
@@ -109,9 +109,10 @@ exports.postTeacherRegister=async(req, res)=>{
         return
     }
     
-    const {userName} = req.body;
+    const {email} = req.body;
     const schoolId = req.session.schoolId;
-    let teacher = await Teacher.findOne({userName: userName, schoolId: schoolId});
+    let teacher = await Teacher.findOne({email: email});
+    const password = getPass();
 
     if(teacher){
         res.status(409).json({
@@ -120,8 +121,9 @@ exports.postTeacherRegister=async(req, res)=>{
     }else if(!teacher){
         const newTeacher = new Teacher({
             schoolId: schoolId,
-            userName: req.body.userName,
-            password: md5(req.body.password),
+            email: req.body.email,
+            name: req.body.name,
+            password: md5(password),
             phone: req.body.phone
         });
 
@@ -138,13 +140,13 @@ exports.postTeacherRegister=async(req, res)=>{
                 })
                 const mailOptions = {
                     from: process.env.websiteMail,
-                    to: req.body.userName,
-                    subject: `${req.session.schoolId} Login Credentials`,
-                    text: `${req.body.userName} has been registered to School with id = ${req.session.schoolId}, 
-                Teacher Login credentials are:
+                    to: req.body.email,
+                    subject: `${req.session.schoolId} Login Credentials of ${req.body.name}`,
+                    text: `${req.body.email} has been registered to School with id = ${req.session.schoolId}, 
+                Your Login credentials are:
                 School-ID: ${req.session.schoolId}
-                School-UserName: ${req.body.userName}
-                School-Password: ${req.body.password}`
+                Your-username: ${req.body.email}
+                Your-Password: ${password}`
                 };
             
                 transporter.sendMail(mailOptions, (error, info)=>{
@@ -155,7 +157,7 @@ exports.postTeacherRegister=async(req, res)=>{
                     } else {
                         console.log('Email sent: ' + info.response);
                         res.status(201).json({
-                            message: `${req.body.userName} is Registered to the School ${req.session.schoolId}`
+                            message: `${req.body.email} is Registered to the School ${req.session.schoolId}`
                         });
                         return
                     }
@@ -196,4 +198,17 @@ exports.updateStudentClass=async(req, res)=>{
     })
     
     
+}
+
+function getPass(){
+    let password="";
+    let charList="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    for(var i=0;i<5;i++){
+        let randomNumber = Math.trunc(Math.random() * 52);
+        password=password+charList.charAt(randomNumber);
+    }
+    for(var i=0;i<3;i++){
+        password=password+Math.trunc(Math.random() * 9)+1;
+    }
+    return password+'@';
 }
