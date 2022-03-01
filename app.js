@@ -6,10 +6,11 @@ const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const { process_params } = require("express/lib/router");
 const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src/controller/admin/adminController");
-const { postOfficialLogin, postStudentRegister , postTeacherRegister, updateStudentClass} = require("./src/controller/official/schoolController.js");
+const { postOfficialLogin, postStudentRegister, postTeacherRegister, updateStudentClass } = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
 const { isAuth, isValidSchool } = require("./src/controller/common/auth");
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
+const { postStudentLogin } = require("./src/controller/student/studentController");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -62,7 +63,10 @@ app.put('/official/updateStudent', isValidSchool, updateStudentClass);
 app.post('/camera/login', postCameraLogin);
 app.post('/camera/attendance', isAuth, postCameraAttendance);
 
-// Common End Points Are Here
+// Student End Points Are Here--------------------------------->
+app.post('/student/login', postStudentLogin);
+
+// Common End Points Are Here---------------------------------->
 app.post('/logout', logoutUser);
 
 
