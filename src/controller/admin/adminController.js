@@ -66,8 +66,8 @@ exports.postAdminLogin = async (req, res) => {
         console.log(req.headers.cookie);
         res.status(200).json({
             message: "Admin Login Successful",
-            session: req.session,
-            cookieData: req.headers.cookie
+            cookieData: req.headers.cookie,
+            session: req.session
         });
     } else {
         res.status(404).json({
