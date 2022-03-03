@@ -1,6 +1,6 @@
 const { Attendance } = require("../../model/attendanceModel");
 const { School } = require("../../model/adminModel");
-const { Student } =require("../../model/studentModel");
+const { Student } = require("../../model/studentModel");
 const md5 = require("md5");
 
 
@@ -16,7 +16,7 @@ exports.postCameraLogin = async (req, res) => {
         });
         return
     }
-    const user = await School.findOne({ "camDetails.userName" : userName  });
+    const user = await School.findOne({ "camDetails.userName": userName });
     if (!user) {
         res.status(404).json({
             detail: {
@@ -27,22 +27,22 @@ exports.postCameraLogin = async (req, res) => {
     } else if ((user.camDetails.password) == md5(password)) {
         req.session.isAuth = true;
         req.session.userName = userName;
-        const studentList= await Student.find({schoolId: user.schoolId});
-        let today=new Date();
-        let cDate,cMonth,cYear;
-        cDate=String(today.getDate());
-        cMonth=String(Number(today.getMonth()+1));
-        if(cDate.length<2){
-            cDate="0"+cDate;
+        const studentList = await Student.find({ schoolId: user.schoolId });
+        let today = new Date();
+        let cDate, cMonth, cYear;
+        cDate = String(today.getDate());
+        cMonth = String(Number(today.getMonth() + 1));
+        if (cDate.length < 2) {
+            cDate = "0" + cDate;
         }
-        if(cMonth.length<2){
-            cMonth="0"+cMonth;
+        if (cMonth.length < 2) {
+            cMonth = "0" + cMonth;
         }
-        cYear=today.getFullYear();
-        today=cYear+"-"+cMonth+"-"+cDate;
-        const dateAlreadyRegistered= await Attendance.findOne({date: today, schoolId: user.schoolId});
-        if(!dateAlreadyRegistered){
-            const newDateAttendance= new Attendance({
+        cYear = today.getFullYear();
+        today = cYear + "-" + cMonth + "-" + cDate;
+        const dateAlreadyRegistered = await Attendance.findOne({ date: today, schoolId: user.schoolId });
+        if (!dateAlreadyRegistered) {
+            const newDateAttendance = new Attendance({
                 date: today,
                 schoolId: user.schoolId,
                 studentList: []
@@ -82,7 +82,26 @@ exports.postCameraAttendance = async (req, res) => {
         });
         return
     } else {
+        const student = await Student.findOne({ uID: studentData.uID });
+        if (!student) {
+            res.status(404).json({
+                detail: {
+                    title: "Invalid Student",
+                    message: "Student is Not Available"
+                }
+            });
+            return
+        }
         const studentAttendance = await Attendance.findOne({ date: date, schoolId: schoolId });
+        if (!studentAttendance) {
+            res.status(404).json({
+                detail: {
+                    title: "Invalid Date or School Id",
+                    message: "Date or School Id is not correct as System"
+                }
+            });
+            return
+        }
         let sList = studentAttendance.studentList;
         const isPresent = isStudentAlreadyPresent(sList, studentData);
         if (isPresent) {
