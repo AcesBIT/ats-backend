@@ -63,9 +63,11 @@ exports.postAdminLogin=async (req,res)=>{
         req.session.isAuth = true;
         req.session.userName = user.userName;
         // res.send("User found, logged in");
+        console.log(req.headers.cookie);
         res.status(200).json({
             message: "Admin Login Successful",
-            session: req.session
+            session: req.session,
+            cookie: req.headers.cookie
         });
     }else{
         res.status(404).json({
@@ -178,7 +180,7 @@ exports.postSchoolRegister= async (req,res)=>{
         });
     }
 }
-
+// req.headers.cookie
 
 // Random Password Generation
 function getPass(){
