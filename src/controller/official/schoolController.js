@@ -18,11 +18,11 @@ exports.postOfficialLogin=async (req,res)=>{
         req.session.isValidSchool = true;
         req.session.userName = req.body.userName;
         req.session.schoolId = school.schoolId;
-
-        res.status(200).json({
-            message: "School Login Sucessful",
-            session: req.session
-        });
+        res.redirect("/official");
+        // res.status(200).json({
+        //     message: "School Login Sucessful",
+        //     session: req.session
+        // });
     }else{
         res.status(404).json({
             detail: {

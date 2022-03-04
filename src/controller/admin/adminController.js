@@ -63,13 +63,14 @@ exports.postAdminLogin=async (req,res)=>{
     else if(user.password === md5(req.body.password)){
         req.session.isAuth = true;
         req.session.userName = user.userName;
+        res.redirect("/admin");
         // res.send("User found, logged in");
-        console.log(req.headers.cookie);
-        res.status(200).json({
-            message: "Admin Login Successful",
-            session: req.session,
-            cookie: req.headers.cookie
-        });
+        // console.log(req.headers.cookie);
+        // res.status(200).json({
+        //     message: "Admin Login Successful",
+        //     session: req.session,
+        //     cookie: req.headers.cookie
+        // });
     }else{
         res.status(404).json({
             detail: {
@@ -174,10 +175,11 @@ exports.postSchoolRegister= async (req,res)=>{
                         res.status(201).json({
                             message: `${schoolName} is Registered to the State Database`
                         });
-                        return
+                        
                     }
                 });
-            }    
+            } 
+               
         });
     }
 }

@@ -1,0 +1,94 @@
+<!-- http://127.0.0.1:5500/Html-Files/Site-Pages/teacher-site.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/Images/Logo/favicon-32x32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Teacher Site Page" />
+    <title>Teacher Site</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="/CSS files/Site-Pages/site.css" />
+    <link rel="stylesheet" href="/CSS files/Site-Pages/teacher-site.css" />
+
+    <!-- Bootstrap cdns -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- JQuery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <!-- Site Navbar -->
+    <nav class="site-navbar">
+
+        <div class="site-navbar-left">
+
+            <!-- Site Vector -->
+            <img class="site-vector" src="/Images/Login Vectors/Teacher-Sign-In.png" alt="" />
+
+            <!-- Site Title -->
+            <label class="site-title">TEACHER</label>
+        </div>
+
+        <div class="site-navbar-right">
+
+            <div class="logout-btn" onclick="homePage()">
+
+                <!-- Logout Vector -->
+                <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
+
+                <!-- Logout Text -->
+                <p class="logout-text">Sign Out</p>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Tabs -->
+    <div class="container registration-tab-area">
+
+        <!-- Attendance By Class -->
+        <div class="registration-tab school-registration" onclick="genAttendance()">
+
+            <!-- Attendance Vector -->
+            <img src="/Images/Site Vectors/Attendance-Icon.png" alt=""
+                class="registration-vector teacher-site-registration-vector" />
+
+            <label for="" class="registration-text">ATTENDANCE DETAILS</label>
+        </div>
+
+
+        <!-- Attendance By Unique ID -->
+        <div class="registration-tab admin-registration" onclick="uidAttendance()">
+
+            <!-- Admin Vector -->
+            <img src="/Images/Site Vectors/Student-Registration-Form.png" alt=""
+                class="registration-vector teacher-site-registration-vector" />
+            <label for="" class="registration-text">ATTENDANCE DETAILS BY UID</label>
+        </div>
+
+        <!--Student classes -->
+        <div class="registration-tab student-attendance" onclick="student()">
+
+            <!-- Student Vector -->
+            <img src="/Images/Site Vectors/School-Registration.png" alt="" class="registration-vector" />
+            <label for="" class="registration-text">REGISTERED STUDENTS</label>
+        </div>
+    </div>
+    </div>
+
+    <!-- JS Files -->
+    <script src="/JS Files/index.js"></script>
+    <script src="/JS Files/site.js"></script>
+</body>
+
+</html>
