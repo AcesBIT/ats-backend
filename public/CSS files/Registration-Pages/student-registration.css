@@ -1,0 +1,41 @@
+.registration-box {
+    box-shadow: 12px 12px 0px 0px rgb(185, 203, 248);
+    width: 770px;
+}
+
+.student-reg-vector {
+    background-color: #383E70;
+}
+
+.row-aligned {
+    display: flex;
+    flex-direction: row;
+}
+
+.w50 {
+    position: relative;
+    width: 54%;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-input {
+    width: 289px;
+}
+
+.row-margin {
+    margin-right: 50px;
+}
+
+#button-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#imageFile.sign-in-input {
+    border-bottom: none;
+}

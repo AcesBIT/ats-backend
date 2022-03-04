@@ -1,0 +1,106 @@
+/* Media query breaks - 1399px, 600px */
+
+.login-section {
+    background-color: #F0FFE4;
+    border-radius: 0px 0px 8px 8px;
+    margin-top: 48px;
+    padding: 72px;
+}
+
+.login-cluster {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 320px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+}
+
+.login-box {
+    width: 300px;
+    height: 180px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+#admin-login {
+    background-color: #E8EEFE;
+
+}
+
+#admin-login:hover {
+    background-color: #dfe8ff;
+}
+
+#admin-login:active {
+    background-color: #d4dff8;
+}
+
+#school-login {
+    background-color: #C2D3E7;
+}
+#school-login:hover {
+    background-color: #b2c8e0;
+}
+
+#school-login:active {
+    background-color: #a7bed8;
+}
+
+#teacher-login {
+    background-color: #FDF1E5;
+}
+
+#teacher-login:hover {
+    background-color: #fdebd8;
+}
+
+#teacher-login:active {
+    background-color: #f8e1ca;
+}
+
+#student-login {
+    background-color: #C6C0E2;
+}
+
+#student-login:hover {
+    background-color: #c0b9db;
+}
+
+#student-login:active {
+    background-color: #b2a9d4;
+}
+
+.login-vector {
+    width: 300px;
+    height: 110px;
+}
+
+.login-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 70px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* For screens below 1399px */
+@media (max-width: 1399px) {
+    .login-cluster {
+        justify-content: center;
+    }
+}
+
+/* For screens below 768px */
+@media (max-width: 768px) {
+    .login-cluster {
+        justify-content: center;
+        padding: 0;
+    }
+}
+

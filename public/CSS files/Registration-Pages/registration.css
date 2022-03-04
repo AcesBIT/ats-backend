@@ -1,0 +1,108 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    /* Helps in using the full 100vh */
+    display: flex;
+    flex-flow: column;
+
+    height: 100%;
+}
+
+div.container-fluid {
+    padding: 0;
+}
+
+.background {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.back-icon {
+    width: 24px;
+    height: 30px;
+    margin-left: 53px;
+    margin-top: 55px;
+    cursor: pointer;
+}
+
+.registration-box {
+    background-color: white;
+    border-radius: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vector {
+    object-fit: contain;
+    width: 192px;
+    height: 192px;
+    margin-top: 30px;
+    margin-bottom: 24px;
+    border-radius: 500px;
+}
+
+.registration-type {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.sign-in-text {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 56px;
+}
+
+.sign-in-input-text {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.sign-in-input {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #777777;
+    padding: 9px 0px;
+    margin-bottom: 42px;
+}
+
+.button {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 30px 24px 48px;
+    width: 200px;
+    height: 64px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.reset-button {
+    background-color: #F7F1FF;
+}
+
+.reset-button:hover {
+    background-color: #f1e9fa;
+}
+
+.reset-button:active {
+    background-color: #ebddfc;
+}
+
+.submit-button {
+    background-color: #c9ceec;
+}
+
+.submit-button:hover {
+    background-color: #bbc3ee;
+}
+
+.submit-button:active {
+    background-color: #b1b9e9;
+}

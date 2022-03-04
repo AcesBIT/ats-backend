@@ -1,0 +1,22 @@
+/* Media query breaks - 1440px, 960px, 600px */
+
+/* Poppins:300 font style uploaded */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+/* Initilisation of padding and margin */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-heading {
+  padding: 60px 0px 50px 0px;
+  text-align: center;
+  font-size: 38px;
+}
+

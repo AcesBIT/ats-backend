@@ -1,0 +1,52 @@
+.site-navbar {
+    background-color: #E8EEFE;
+}
+
+.logout-btn:hover {
+    background-color: #dfe8ff;
+}
+
+.logout-btn:active {
+    background-color: #d4dff8;
+}
+
+.school-registration {
+    background-color: #1c0e80;
+}
+
+.school-registration:hover {
+    background-color: #231494;
+}
+
+.school-registration:active {
+    background-color: #2a19a8;
+}
+
+.admin-registration {
+    background-color: #35395c;
+}
+
+.admin-registration:hover {
+    background-color: #3d426d;
+}
+
+.admin-registration:active {
+    background-color: #424674;
+}
+
+.registered-school {
+    background-color: #374f8f;
+}
+
+.registered-school:hover {
+    background-color: #3f58a0;
+}
+
+.registered-school:active {
+    background-color: #435fb3;
+}
+
+.registered-school-vector {
+    height: 137px;
+    width: 165px;
+}

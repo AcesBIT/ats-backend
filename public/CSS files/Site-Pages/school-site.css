@@ -1,0 +1,64 @@
+.site-navbar {
+    background-color: #C2D3E7;
+}
+
+.logout-btn:hover {
+    background-color: #b6cce6;
+}
+
+.logout-btn:active {
+    background-color: #a9c4e6;
+}
+
+.school-registration {
+    background-color: #1c0e80;
+}
+
+.school-registration:hover {
+    background-color: #231494;
+}
+
+.school-registration:active {
+    background-color: #2a19a8;
+}
+
+.admin-registration {
+    background-color: #35395c;
+}
+
+.admin-registration:hover {
+    background-color: #3d426d;
+}
+
+.admin-registration:active {
+    background-color: #424674;
+}
+
+.registered-school {
+    background-color: #374f8f;
+}
+
+.registered-school:hover {
+    background-color: #3f58a0;
+}
+
+.registered-school:active {
+    background-color: #435fb3;
+}
+
+.student-attendance {
+    background-color: #231a58;
+}
+
+.student-attendance:hover {
+    background-color: #2e2270;
+}
+
+.student-attendance:active {
+    background-color: #362883;
+}
+
+.teacher-site-registration-vector {
+    height: 128px;
+    width: 160px;
+}
