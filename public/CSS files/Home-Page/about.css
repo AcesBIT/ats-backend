@@ -1,0 +1,49 @@
+/* Media query breaks - 1280px, 600px */
+
+.about-section {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 40px;
+}
+
+#about-vector {
+    object-fit: contain;
+    max-width: 489px;
+    max-height: 495px;
+    padding-right: 40px;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.about-heading {
+    font-size: 36px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.about-body {
+    text-align: justify;
+    font-size: 18px;
+}
+
+/* For screens below 1280px */
+@media (max-width: 1280px) {
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #about-vector {
+        padding: 0px;
+    }
+
+    .about-content {
+        padding-top: 20px; 
+    }
+}
+

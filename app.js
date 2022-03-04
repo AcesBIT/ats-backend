@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const ejs = require("ejs");
 const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const { process_params } = require("express/lib/router");
@@ -17,11 +18,11 @@ const PORT = process.env.PORT || 3000;
 const pass = process.env.dbPassword;
 
 const app = express();
-
-
+app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.set('view engine', 'ejs');
 
 mongoose.connect(`mongodb+srv://admin-aces:${pass}@cluster0.buvru.mongodb.net/managementDB`, {
     useNewUrlParser: true,
@@ -44,10 +45,14 @@ app.use(session({
 
 
 app.get('/', (req, res) => {
-    res.send('Server is Running Copyright @sourashispaul @siddhantsrivastava');
+    res.render("index");
 });
-
-
+app.get('/schoolRegister', (req, res) => {
+    res.render("schoolRegister");
+});
+app.get('/schoolLogin', (req, res)=>{
+    res.render("schoolLogin");
+});
 // Admin End Points Are Here----------------------------------->
 app.post('/admin/login', postAdminLogin);
 app.post('/admin/register', postAdminRegister);

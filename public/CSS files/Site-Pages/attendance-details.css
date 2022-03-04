@@ -1,0 +1,60 @@
+.back-icon {
+    width: 24px;
+    height: 30px;
+    margin-left: 53px;
+    margin-top: 55px;
+    cursor: pointer;
+}
+
+.input-area {
+    background-color: #E8EEFE;
+    width: auto;
+    margin: 56px auto;
+    border-radius: 10px;
+    padding: 48px 64px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.attendance-input-text {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 18px;
+}
+
+.attendance-input {
+    border-radius: 6px;
+    width: 180px;
+    border: none;
+    padding-left: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.button {
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 40px;
+    width: 160px;
+    background-color: #FDF1E5;;
+}
+
+.button:hover {
+    background-color: #ffebd7;;
+}
+
+.button:active {
+    background-color: #ffe5cd;
+}
+
+select {
+    border: none;
+}

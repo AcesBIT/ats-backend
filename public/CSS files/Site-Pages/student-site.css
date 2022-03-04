@@ -1,0 +1,170 @@
+.site-navbar {
+  background-color: #c6c0e2;
+}
+
+.logout-btn:hover {
+  background-color: #c2bae7;
+}
+
+.logout-btn:active {
+  background-color: #baafeb;
+}
+
+.student-content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin-top: 47px;
+}
+
+.student-details {
+    width: 979px;
+    height: auto;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.29);
+    border-radius: 24px;
+    padding: 58px 36px 28px;
+    display: flex;
+    flex-direction: row;
+    background-color: #FCFCFC;
+}
+
+.student-image {
+    width: 254px;
+    height: 244px;
+    border-radius: 13px;
+    margin-right: 37px;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.student-info-section {
+    margin-bottom: 30px;
+}
+
+.student-info-text {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.student-info-data {
+    font-size: 15px;
+    border-bottom: 1px solid #777777;
+    padding: 10px 0px;
+}
+
+.align-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w33 {
+    width: 33%;
+}
+
+.margin {
+    margin-right: 34px;
+}
+
+.statistics {
+    background-color: #C6C0E2;
+    z-index: -1;
+    top: -20px;
+    position: relative;
+    width: 979px;
+    height: auto;
+    display: flex;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.29);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    padding: 56px 64px 36px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.circular-progress-bar {
+    height: 160px;
+    width: 160px;
+    position: relative;
+}
+
+.outer {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15), -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.inner {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0px rgba(255, 255, 255, 1), 0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+.percentage-value {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+circle {
+    fill: none;
+    stroke: url(#GradientColor);
+    stroke-width: 20px;
+    /* Max value is 472 -> 100% */
+    stroke-dasharray: 472; 
+    /* calculating the chakki according to the value */
+    /* Max value is 472 -> 100% */
+    stroke-dashoffset: 472;
+    animation: anim 2s linear forwards;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes anim {
+    100% {
+        stroke-dashoffset: 94.4; 
+        /* 0 means nothing is hiding, i.e. full svg is visible */
+        /* 472 means nothing is visible */
+    }
+}
+
+.statistics-box {
+    background-color: #FCFCFC;
+    width: 240px;
+    height: 130px;
+    padding: 16px 32px;
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.statistics-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.statistics-value {
+    font-size: 30px;
+    font-weight: 500;
+}

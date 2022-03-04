@@ -1,0 +1,242 @@
+<!-- http://127.0.0.1:5500/Html-Files/index.html -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/Images/Logo/favicon-32x32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="The Online Attendance System uses facial recognition to mark the attendance of a student and also shows their corresponding attendance details" />
+    <title>Online Attendance System</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="/CSS files/index.css" />
+    <link rel="stylesheet" href="/CSS files/Home-Page/navbar.css" />
+    <link rel="stylesheet" href="/CSS files/Home-Page/login.css" />
+    <link rel="stylesheet" href="/CSS files/Home-Page/about.css" />
+    <link rel="stylesheet" href="/CSS files/Home-Page/contact.css" />
+    <link rel="stylesheet" href="/CSS files/Home-Page/footer.css" />
+
+    <!-- Bootstrap cdns -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- JQuery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="container-fluid">
+
+        <!-- Logo and Brand -->
+        <label class="logo"><img class="logo-img" src="/Images/Logo/favicon-32x32.png" alt="" />ATTENDANCE
+            SYSTEM</label>
+
+        <!-- Hamburger icon -->
+        <label id="hamburger">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <!-- Menu list -->
+        <ul id="nav-menu" class="nav-menu">
+            <li class="menu"><a id="nav-Home" class="menu-item" href="#">Home</a></li>
+            <li class="menu"><a id="nav-About-us" class="menu-item" href="#about-us">About Us</a></li>
+            <li class="menu"><a id="nav-Contact-us" class="menu-item" href="#contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- onClick="window.open('https://api-govschool.herokuapp.com/','_self');" -->
+    <!-- Login Section -->
+    <div class="container login-section">
+
+        <!-- Login area -->
+        <div id="sign-in" class="login-cluster" onClick="window.open('https://api-govschool.herokuapp.com/','_self');">
+
+            <!-- Admin -->
+            <div id="admin-login" class="login-box">
+                <img class="login-vector" src="/Images/Login Vectors/Admin.png" alt="" />
+                <p class="login-text">ADMIN</p>
+            </div>
+
+            <!-- School -->
+            <div id="school-login" class="login-box" onclick="schoolSignIn()">
+                <img class="login-vector" src="/Images/Login Vectors/School.png" alt="" />
+                <p class="login-text">SCHOOL</p>
+            </div>
+
+            <!-- Teacher -->
+            <div id="teacher-login" class="login-box" onclick="teacherSignIn()">
+                <img class="login-vector" src="/Images/Login Vectors/Teacher.png" alt="" />
+                <p class="login-text">TEACHER</p>
+            </div>
+
+            <!-- Student -->
+            <div id="student-login" class="login-box" onclick="studentSignIn()">
+                <img class="login-vector" src="/Images/Login Vectors/Student.png" alt="" />
+                <p class="login-text">STUDENT</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- About Us Section -->
+    <div id="about-us-section" class="container">
+
+        <!-- Headng -->
+        <p id="about-us" class="section-heading">ABOUT US</p>
+
+        <!-- About Section -->
+        <div class="about-section">
+
+            <!-- About Image -->
+            <img id="about-vector" src="/Images/About Vector/About.png" alt="" />
+
+            <!-- About Content -->
+            <div class="about-content">
+                <div class="about-heading">Online Attendance System</div>
+                <div class="about-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+                    ac lectus nec mauris rutrum faucibus. Integer et dapibus libero,
+                    vitae rhoncus sapien. Sed cursus eu lectus in venenatis. Praesent
+                    non odio sagittis, consequat nibh sit amet, ornare est. Nulla
+                    sagittis auctor augue vel mollis. Sed viverra lobortis semper. Fusce
+                    cursus lectus et nisi congue, a fermentum nibh posuere. Maecenas
+                    vitae magna sed libero dignissim malesuada vel vulputate metus.
+                    Aliquam id ex nunc. Cras aliquet sollicitudin arcu id consectetur.
+                    Suspendisse ut fermentum dolor. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Aliquam pharetra consectetur semper.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Us Section -->
+    <div id="contact-us" class="container">
+
+        <!-- Heading -->
+        <p id="contact-us" class="section-heading">CONTACT US</p>
+        <div class="contact-section">
+
+            <!-- Contact Info Section -->
+            <div class="contact-info">
+                <p class="contact-info-heading">Contact Information</p>
+                <p class="contact-info-sub-heading">
+                    Fill up the form and our team will get back to you within 24 hours.
+                </p>
+                <div class="contact-info-type" width="18px" height="18px">
+                    <img src="/Images/Contact Icons/Telephone.png" alt="" class="contact-info-icon" />
+                    <p class="contact-info-value">+91 8910684983</p>
+                </div>
+                <div class="contact-info-type">
+                    <img src="/Images/Contact Icons/Email.png" width="20px" height="16px" alt=""
+                        class="contact-info-icon" />
+                    <p class="contact-info-value">govschoolattendance@gmail.com</p>
+                </div>
+                <div class="contact-info-type">
+                    <img src="/Images/Contact Icons/Location.png" width="14px" height="20px" alt=""
+                        class="contact-info-icon" />
+                    <p class="contact-info-value">Kolkata, West Bengal</p>
+                </div>
+            </div>
+
+
+            <!-- Contact Form -->
+            <div id="contact-form" class="contact-form">
+                <div class="form-box">
+                    <div class="input-box w50">
+                        <input id="contact-fname" name="contact-fname" class="input" type="text" required>
+                        <span class="input-name">First Name</span>
+                    </div>
+                    <div class="input-box w50">
+                        <input id="contact-lname" name="contact-lname" class="input" type="text" required>
+                        <span class="input-name">Last Name</span>
+                    </div>
+                    <div class="input-box w50">
+                        <input id="contact-email" name="contact-email" class="input" type="email" required>
+                        <span class="input-name">Email Id.</span>
+                    </div>
+                    <div class="input-box w50">
+                        <input id="contact-phone" name="contact-phone" class="input" type="text" required>
+                        <span class="input-name">Phone No.</span>
+                    </div>
+                    <div class="input-box w100">
+                        <textarea id="contact-msg" name="contact-msg" class="input input-msg" required></textarea>
+                        <span class="input-name">Write your message here...</span>
+                    </div>
+                    <div class="input-box w100">
+                        <input class="input input-btn" type="submit" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid footer">
+
+        <!-- Footer Section -->
+        <div id="footer-section" class="container">
+
+            <!-- Footer Menu list -->
+            <ul class="footer-nav-menu">
+                <li class="footer-menu"><a id="foot-Home" class="footer-menu-item" href="#">Home</a></li>
+                <li class="footer-menu"><a id="foot-About-us" class="footer-menu-item" href="#about-us">About Us</a>
+                </li>
+                <li class="footer-menu"><a id="foot-Contact-us" class="footer-menu-item" href="#contact-us">Contact
+                        Us</a></li>
+            </ul>
+
+            <!-- Newsletter Section -->
+            <div class="newsletter-section">
+                <!-- Heading -->
+                <div class="newsletter-heading">NewsLetter</div>
+
+                <!-- Newsletter text -->
+                <div class="newsletter-text">Subscribe here to get all the latest updates on your email address</div>
+
+                <!-- Input Box Area -->
+                <div class="newsletter-input">
+                    <input id="footer-email" name="footer-email" type="email" placeholder="Enter your email address"
+                        class="newsletter-input-box" required>
+                    <div class="sub-btn">
+                        <img src="/Images/Contact Icons/Email.png" alt="" class="sub-icon" />
+                        <p class="sub-text">Subscribe</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="social">
+                <!-- Social Text -->
+                <div class="social-text">Follow Us</div>
+
+                <!-- Social Icons -->
+                <div class="social-links">
+                    <img class="social-icon" src="/Images/Social Icons/Facebook.png" alt="">
+                    <img class="social-icon" src="/Images/Social Icons/Instagram.png" alt="">
+                    <img class="social-icon" src="/Images/Social Icons/Twitter.png" alt="">
+                    <img class="social-icon" src="/Images/Social Icons/LinkedIn.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="copyright-text container">
+            Copyright © 2022 Attendance System | Powered By Aces
+        </div>
+
+
+        <!-- JS File -->
+        <script src="/JS Files/index.js"></script>
+</body>
+
+</html>

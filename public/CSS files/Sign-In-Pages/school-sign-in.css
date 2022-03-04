@@ -1,0 +1,27 @@
+.sign-in-box {
+    box-shadow: 12px 12px 0px 0px #E1E9F3
+}
+
+.reset-button {
+    background-color: #F7F1FF;
+}
+
+.reset-button:hover {
+    background-color: #f1e9fa;
+}
+
+.reset-button:active {
+    background-color: #ebddfc;
+}
+
+.submit-button {
+    background-color: #C2D3E7;
+}
+
+.submit-button:hover {
+    background-color: #b0cae9;
+}
+
+.submit-button:active {
+    background-color: #9fbee4;
+}

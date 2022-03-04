@@ -1,0 +1,226 @@
+/* Media query breaks - 1440px, 960px, 720px, 600px */
+
+/* Ubuntu font style imported */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+nav {
+  display: flex;
+  background-color: #004466;
+  height: 72px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+label.logo {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 36px;
+  color: #dae4e9;
+  margin-left: 160px;
+}
+
+img.logo-img {
+  margin-right: 4px;
+  height: 36px;
+  width: 36px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+  margin-right: 160px;
+  padding-left: 0;
+  width: 50%;
+  list-style-type: none;
+}
+
+nav li {
+  flex-direction: row;
+  margin: 0 16px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  padding: 7px;
+}
+
+nav ul li a:hover {
+  color: #ccdff1;
+  transition: 0.2s;
+  background-color: #004e79;
+  border-radius: 5px;
+}
+
+nav ul li a:active {
+  color: #ccdff1;
+  background-color: #003e5f;
+  border-radius: 5px;
+}
+
+nav #hamburger {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #dae4e9;
+  font-size: 30px;
+  width: 50%;
+  margin-right: 60px;
+  cursor: pointer;
+  display: none;
+}
+
+/* For screens below 1440px */
+@media (max-width: 1440px) {
+  label.logo {
+    font-size: 32px;
+    margin-left: 60px;
+  }
+
+  img.logo-img {
+    height: 32px;
+    width: 32px;
+  }
+
+  nav ul {
+    margin-right: 60px;
+  }
+
+  nav li {
+    margin: 0 8px;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+
+  }
+}
+
+/* For screens below 960px */
+@media (max-width: 960px) {
+  nav {
+    height: 64px;
+  }
+
+  label.logo {
+    font-size: 26px;
+  }
+
+  img.logo-img {
+    height: 26px;
+    width: 26px;
+  }
+
+  nav ul {
+    position: fixed;
+    width: 100%;
+    height: 20%;
+    background: #044d72;
+    top: 64px;
+    left: -100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+  }
+
+  nav ul li {
+    margin: 20px;
+  }
+
+  nav ul li a {
+    font-size: 18px;
+  }
+
+  nav #hamburger {
+    display: flex;
+    font-size: 26px;
+  }
+
+  nav ul li a:hover {
+    background-color: transparent;
+  }
+
+  nav ul.show {
+    left: 0;
+  }
+
+}
+
+/* For screens below 720px */
+@media (max-width: 720px) {
+  nav {
+    height: 64px;
+  }
+
+  label.logo {
+    font-size: 22px;
+    margin-left: 40px;
+  }
+
+  img.logo-img {
+    height: 22px;
+    width: 22px;
+  }
+
+  nav ul {
+    height: 18%;
+    top: 64px;
+  }
+
+  nav ul li {
+    margin: 15px;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  nav #hamburger {
+    font-size: 24px;
+    margin-right: 40px;
+  }
+}
+
+/* For screens below 600px */
+@media (max-width: 600px) {
+  nav {
+    height: 48px;
+  }
+
+  label.logo {
+    font-size: 16px;
+  }
+
+  img.logo-img {
+    height: 16px;
+    width: 16px;
+  }
+
+  nav ul {
+    height: 15%;
+    top: 48px;
+  }
+
+  nav ul li {
+    margin: 5px;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+  }
+
+  nav #hamburger {
+    font-size: 16px;
+  }
+}

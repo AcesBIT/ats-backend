@@ -1,0 +1,93 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    /* Helps in using the full 100vh */
+    display: flex;
+    flex-flow: column;
+
+    height: 80%;
+}
+
+.site-navbar {
+    height: 96px;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 150px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.site-navbar-left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.site-vector {
+    height: 89px;
+    width: 89px;
+}
+
+.site-title {
+    font-size: 30px;
+    padding-left: 18px;
+}
+
+.site-navbar-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 10px 10px 6px ;
+    border-radius: 8px;
+}
+
+.logout-vector {
+    width: 29px;
+    height: 29px;
+}
+
+.logout-text {
+    margin: 0;
+    font-size: 22px;
+    padding-left: 16px;
+}
+
+.registration-tab-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    margin: 64px 0px 108px;
+}
+
+.registration-tab {
+    width: 360px;
+    height: 200px;
+    margin: 36px 36px 0px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+}
+
+.registration-vector {
+    padding-bottom: 8px;
+}
+
+.registration-text {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+}
