@@ -58,31 +58,37 @@
     <div class="container login-section">
 
         <!-- Login area -->
-        <div id="sign-in" class="login-cluster" onClick="window.open('https://api-govschool.herokuapp.com/','_self');">
+        <div id="sign-in" class="login-cluster">
 
             <!-- Admin -->
-            <div id="admin-login" class="login-box">
-                <img class="login-vector" src="/Images/Login Vectors/Admin.png" alt="" />
-                <p class="login-text">ADMIN</p>
-            </div>
+            <form id="adminform" action="adminlogin" method="get">
+                <div id="admin-login" class="login-box" onclick="adminSignIn()">
+                    <img class="login-vector" src="/Images/Login Vectors/Admin.png" alt="" />
+                    <p class="login-text">ADMIN</p>
+                </div>
+            </form>
 
             <!-- School -->
-            <div id="school-login" class="login-box" onclick="schoolSignIn()">
-                <img class="login-vector" src="/Images/Login Vectors/School.png" alt="" />
-                <p class="login-text">SCHOOL</p>
-            </div>
-
+            <form id="schoolform" action="/schoollogin" method="get">
+                <div id="school-login" class="login-box" onclick="schoolSignIn()">
+                    <img class="login-vector" src="/Images/Login Vectors/School.png" alt="" />
+                    <p class="login-text">SCHOOL</p>
+                </div>
+            </form>
             <!-- Teacher -->
-            <div id="teacher-login" class="login-box" onclick="teacherSignIn()">
-                <img class="login-vector" src="/Images/Login Vectors/Teacher.png" alt="" />
-                <p class="login-text">TEACHER</p>
-            </div>
-
+            <form id="teacherform" action="/teacherlogin" method="get">
+                <div id="teacher-login" class="login-box" onclick="teacherSignIn()">
+                    <img class="login-vector" src="/Images/Login Vectors/Teacher.png" alt="" />
+                    <p class="login-text">TEACHER</p>
+                </div>
+            </form>
             <!-- Student -->
-            <div id="student-login" class="login-box" onclick="studentSignIn()">
-                <img class="login-vector" src="/Images/Login Vectors/Student.png" alt="" />
-                <p class="login-text">STUDENT</p>
-            </div>
+            <form id="studentform" action="/studentlogin" method="get">
+                <div id="student-login" class="login-box" onclick="studentSignIn()">
+                    <img class="login-vector" src="/Images/Login Vectors/Student.png" alt="" />
+                    <p class="login-text">STUDENT</p>
+                </div>
+            </form>
         </div>
     </div>
 

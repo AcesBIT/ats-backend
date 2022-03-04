@@ -44,15 +44,59 @@ app.use(session({
 }));
 
 
+
+
+//home page
 app.get('/', (req, res) => {
     res.render("index");
 });
-app.get('/schoolRegister', (req, res) => {
-    res.render("schoolRegister");
+app.get('/adminlogin', (req, res)=>{
+    res.render("adminLogin");
 });
-app.get('/schoolLogin', (req, res)=>{
+app.get('/schoollogin', (req, res)=>{
     res.render("schoolLogin");
 });
+app.get('/teacherlogin', (req, res)=>{
+    res.render("teacherLogin");
+});
+app.get('/studentlogin', (req, res)=>{
+    res.render("studentLogin");
+});
+
+
+
+
+//admin-site
+app.get('/admin', isAuth, (req, res)=>{
+    res.render("admin");
+});
+app.get('/admin/schoolregister', isAuth, (req, res) => {
+    res.render("schoolRegister");
+});
+app.get('/admin/adminregister', isAuth, (req, res) => {
+    res.render("adminRegister");
+});
+
+
+
+//school-site
+app.get('/official', isAuth, (req, res)=>{
+    res.render("school");
+});
+app.get('/official/studentRegister', isAuth, (req, res)=>{
+    res.render("studentRegister");
+});
+app.get('/official/teacherRegister', isAuth, (req, res)=>{
+    res.render("teacherRegister");
+});
+
+
+
+
+
+
+
+
 // Admin End Points Are Here----------------------------------->
 app.post('/admin/login', postAdminLogin);
 app.post('/admin/register', postAdminRegister);
