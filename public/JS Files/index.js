@@ -7,7 +7,8 @@ $(document).ready(function () {
 
 // Returning to the home page
 function homePage() {
-  window.open("../index.html", "_self");
+  // window.open("../index.html", "_self");
+  document.getElementById("homeform").submit();
 }
 
 // Going to the Admin sign-in page
@@ -32,4 +33,8 @@ function teacherSignIn() {
 function studentSignIn() {
   // window.open("./Sign-In-Pages/student-sign-in.html", "_self");
   document.getElementById("studentform").submit();
+}
+
+function schoolReg(){
+  document.getElementById("schoolReg").submit();
 }

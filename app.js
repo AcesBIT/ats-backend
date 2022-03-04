@@ -80,7 +80,7 @@ app.get('/admin/adminregister', isAuth, (req, res) => {
 
 
 //school-site
-app.get('/official', isAuth, (req, res)=>{
+app.get('/official', isValidSchool, (req, res)=>{
     res.render("school");
 });
 app.get('/official/studentRegister', isAuth, (req, res)=>{
@@ -91,6 +91,10 @@ app.get('/official/teacherRegister', isAuth, (req, res)=>{
 });
 
 
+//teacher-site
+app.get('/teacher',  isAuth, (req, res)=>{
+    res.render("teacher");
+});
 
 
 

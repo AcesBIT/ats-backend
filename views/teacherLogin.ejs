@@ -27,11 +27,15 @@
 
 <body style="background-color:#FDF1E5;">
 
-    <div class="container-fluid">
+    <form id="homeform" action="/" method="get">
+        <div class="container-fluid" onclick="homePage()">
 
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="homePage()" />
-    </div>
+            <!-- Back icon -->
+
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" onclick="">
+
+        </div>
+    </form>
 
     <div class="background">
 
@@ -46,28 +50,29 @@
 
             <!-- Sign In message -->
             <div class="sign-in-text">Sign in to your account</div>
+            <form action="" method="post">
+                <div>
 
-            <div>
+                    <!-- Email-ID -->
+                    <div class="sign-in-input-text">Username</div>
+                    <input id="username" type="text" class="sign-in-input" placeholder="Enter your username" required>
 
-                <!-- Email-ID -->
-                <div class="sign-in-input-text">Username</div>
-                <input id="username" type="text" class="sign-in-input" placeholder="Enter your username" required>
+                    <!-- Password -->
+                    <div class="sign-in-input-text">Password</div>
+                    <input id="password" class="sign-in-input" type="password" placeholder="Enter your password"
+                        required></input>
 
-                <!-- Password -->
-                <div class="sign-in-input-text">Password</div>
-                <input id="password" class="sign-in-input" type="password" placeholder="Enter your password"
-                    required></input>
+                    <!-- Buttons -->
+                    <div id="button">
 
-                <!-- Buttons -->
-                <div id="button">
+                        <!-- Reset Button -->
+                        <button type="reset" class="button reset-button">Reset</button>
 
-                    <!-- Reset Button -->
-                    <button type="reset" class="button reset-button" onclick="resetSignIn()">Reset</button>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="button submit-button" onclick="teacherSignInRequest()">Submit</button>
+                        <!-- Submit Button -->
+                        <button type="submit" class="button submit-button">Submit</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 

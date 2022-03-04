@@ -57,13 +57,15 @@
     <div class="container registration-tab-area">
 
         <!-- School Registration -->
-        <div class="registration-tab school-registration" onclick="schoolReg()">
+        <form id="schoolReg" action="/admin/schoolregister" method="get">
+            <div class="registration-tab school-registration" onclick="schoolReg()">
 
-            <!-- School Vector -->
-            <img src="/Images/Site Vectors/School-Registration.png" alt="" class="registration-vector" />
+                <!-- School Vector -->
+                <img src="/Images/Site Vectors/School-Registration.png" alt="" class="registration-vector" />
 
-            <label for="" class="registration-text">SCHOOL REGISTRATION</label>
-        </div>
+                <label for="" class="registration-text">SCHOOL REGISTRATION</label>
+            </div>
+        </form>
 
 
         <!-- Admin Registration -->
@@ -87,7 +89,6 @@
 
     <!-- JS Files -->
     <script src="/JS Files/index.js"></script>
-    <script src="/JS Files/site.js"></script>
 </body>
 
 </html>
