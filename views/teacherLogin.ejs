@@ -50,17 +50,18 @@
 
             <!-- Sign In message -->
             <div class="sign-in-text">Sign in to your account</div>
-            <form action="" method="post">
+            <form action="/teacher/login" method="post">
                 <div>
 
                     <!-- Email-ID -->
                     <div class="sign-in-input-text">Username</div>
-                    <input id="username" type="text" class="sign-in-input" placeholder="Enter your username" required>
+                    <input name="emailId" id="username" type="text" class="sign-in-input"
+                        placeholder="Enter your username" required>
 
                     <!-- Password -->
                     <div class="sign-in-input-text">Password</div>
-                    <input id="password" class="sign-in-input" type="password" placeholder="Enter your password"
-                        required></input>
+                    <input name="password" id="password" class="sign-in-input" type="password"
+                        placeholder="Enter your password" required></input>
 
                     <!-- Buttons -->
                     <div id="button">

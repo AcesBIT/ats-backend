@@ -9,9 +9,10 @@ const { process_params } = require("express/lib/router");
 const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src/controller/admin/adminController");
 const { postOfficialLogin, postStudentRegister, postTeacherRegister, updateStudentClass } = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
-const { isAuth, isValidSchool } = require("./src/controller/common/auth");
+const { isAuth, isValidSchool, isTeacher } = require("./src/controller/common/auth");
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
 const { postStudentLogin } = require("./src/controller/student/studentController");
+const { postTeacherLogin } = require("./src/controller/teacher/teacherController");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -92,7 +93,7 @@ app.get('/official/teacherRegister', isAuth, (req, res)=>{
 
 
 //teacher-site
-app.get('/teacher',  isAuth, (req, res)=>{
+app.get('/teacher',  isTeacher, (req, res)=>{
     res.render("teacher");
 });
 
@@ -118,6 +119,10 @@ app.post('/camera/attendance', isAuth, postCameraAttendance);
 
 // Student End Points Are Here--------------------------------->
 app.post('/student/login', postStudentLogin);
+
+
+// Teacher End Points Are Here--------------------------------->
+app.post('/teacher/login', postTeacherLogin);
 
 // Common End Points Are Here---------------------------------->
 app.post('/logout', logoutUser);
