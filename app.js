@@ -118,6 +118,10 @@ app.post('/teacher/attendance/filter', isTeacher, async(req, res)=>{
 
     const studentList = await Attendance.findOne({date: req.body.date, schoolId:req.session.schoolId});
 
+    if(!studentList){
+        res.redirect("/teacher/attendancelist");
+    }
+
     const currentClassList = studentList.studentList;
     let list = [];
 
