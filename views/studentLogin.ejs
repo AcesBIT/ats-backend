@@ -46,28 +46,31 @@
 
             <!-- Sign In message -->
             <div class="sign-in-text">Sign in to your account</div>
+            <form action="/student/login" method="post">
+                <div>
 
-            <div>
+                    <!-- Email-ID -->
+                    <div class="sign-in-input-text">Username</div>
+                    <input id="userName" name="userName" type="text" class="sign-in-input"
+                        placeholder="Enter your username" required>
 
-                <!-- Email-ID -->
-                <div class="sign-in-input-text">Username</div>
-                <input id="username" type="text" class="sign-in-input" placeholder="Enter your username" required>
+                    <!-- Password -->
+                    <div class="sign-in-input-text">Password</div>
+                    <input id="password" name="password" class="sign-in-input" type="password"
+                        placeholder="Enter your password" required></input>
 
-                <!-- Password -->
-                <div class="sign-in-input-text">Password</div>
-                <input id="password" class="sign-in-input" type="password" placeholder="Enter your password"
-                    required></input>
+                    <!-- Buttons -->
+                    <div id="button">
 
-                <!-- Buttons -->
-                <div id="button">
+                        <!-- Reset Button -->
+                        <button type="reset" class="button reset-button" onclick="resetSignIn()">Reset</button>
 
-                    <!-- Reset Button -->
-                    <button type="reset" class="button reset-button" onclick="resetSignIn()">Reset</button>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="button submit-button" onclick="studentSignInRequest()">Submit</button>
+                        <!-- Submit Button -->
+                        <button type="submit" name="submit" class="button submit-button"
+                            onclick="studentSignInRequest()">Submit</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 

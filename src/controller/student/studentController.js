@@ -3,6 +3,7 @@ const { Attendance } = require("../../model/attendanceModel");
 
 exports.postStudentLogin = async (req, res) => {
     const { userName, password } = req.body;
+    console.log(req.body);
     if (!userName || !password) {
         res.status(400).json({
             detail: {
@@ -33,15 +34,7 @@ exports.postStudentLogin = async (req, res) => {
         let studentPresentDays = checkNumber(schoolData, userName);
         let schoolDay = schoolData.length;
         let percentage = calculatePercentage(schoolDay, studentPresentDays);
-        res.status(200).json({
-            message: "Student Data Fetch Successful",
-            studentDetails: {
-                uID: userName,
-                presentDay: studentPresentDays,
-                schoolDays: schoolDay,
-                percentage: percentage
-            }
-        });
+        res.render("studentDashboard", { userName: userName, studentData: user, percentage: percentage, schoolDay: schoolDay, studentPresentDays: studentPresentDays });
     } else {
         res.status(404).json({
             detail: {
