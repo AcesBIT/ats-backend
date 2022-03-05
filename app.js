@@ -52,13 +52,25 @@ app.get('/', (req, res) => {
     res.render("index");
 });
 app.get('/adminlogin', (req, res)=>{
-    res.render("adminLogin");
+    if(req.session.isAuth){
+        res.redirect("/admin");
+    }else{
+        res.render("adminLogin");
+    }
 });
 app.get('/schoollogin', (req, res)=>{
-    res.render("schoolLogin");
+    if(req.session.isValidSchool){
+        res.redirect("/official");
+    }else{
+        res.render("schoolLogin");
+    }
 });
 app.get('/teacherlogin', (req, res)=>{
-    res.render("teacherLogin");
+    if(req.session.isTeacher){
+        res.redirect("/teacher");
+    }else{
+        res.render("teacherLogin");
+    }
 });
 app.get('/studentlogin', (req, res)=>{
     res.render("studentLogin");
@@ -69,7 +81,7 @@ app.get('/studentlogin', (req, res)=>{
 
 //admin-site
 app.get('/admin', isAuth, (req, res)=>{
-    res.render("admin");
+    res.render("admin", {userName: req.session.userName});
 });
 app.get('/admin/schoolregister', isAuth, (req, res) => {
     res.render("schoolRegister");
@@ -82,7 +94,7 @@ app.get('/admin/adminregister', isAuth, (req, res) => {
 
 //school-site
 app.get('/official', isValidSchool, (req, res)=>{
-    res.render("school");
+    res.render("school", {userName: req.session.userName});
 });
 app.get('/official/studentRegister', isAuth, (req, res)=>{
     res.render("studentRegister");
@@ -94,7 +106,10 @@ app.get('/official/teacherRegister', isAuth, (req, res)=>{
 
 //teacher-site
 app.get('/teacher',  isTeacher, (req, res)=>{
-    res.render("teacher");
+    res.render("teacher", {userName: req.session.userName});
+});
+app.get('/teacher/attendancelist', (req, res)=>{
+    res.render("attendanceList", {userName: req.session.userName});
 });
 
 

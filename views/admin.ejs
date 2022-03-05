@@ -40,15 +40,18 @@
         </div>
 
         <div class="site-navbar-right">
+            <form id="logoutForm" action="/logout" method="post">
+                <div class="logout-btn" onclick="homePage()">
 
-            <div class="logout-btn" onclick="homePage()">
+                    <!-- Logout Vector -->
+                    <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
 
-                <!-- Logout Vector -->
-                <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
+                    <!-- Logout Text -->
+                    <p class="logout-text">Sign Out</p>
+                    <input name="userName" value="<%=userName%>" type="hidden">
 
-                <!-- Logout Text -->
-                <p class="logout-text">Sign Out</p>
-            </div>
+                </div>
+            </form>
         </div>
     </nav>
 
@@ -57,7 +60,7 @@
     <div class="container registration-tab-area">
 
         <!-- School Registration -->
-        <form id="schoolReg" action="/admin/schoolregister" method="get">
+        <form id="schoolreg" action="/admin/schoolregister" method="get">
             <div class="registration-tab school-registration" onclick="schoolReg()">
 
                 <!-- School Vector -->
@@ -88,7 +91,7 @@
     </div>
 
     <!-- JS Files -->
-    <script src="/JS Files/index.js"></script>
+    <script src="../../JS Files/index.js"></script>
 </body>
 
 </html>
