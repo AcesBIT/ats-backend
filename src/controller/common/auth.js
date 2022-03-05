@@ -23,3 +23,16 @@ exports.isValidSchool = (req, res, next)=>{
         });
     }
 }
+
+exports.isTeacher = (req, res, next)=>{
+    if(req.session.isTeacher){
+        next();
+    }else{
+        res.status(404).json({
+            detail: {
+                title: "Error !",
+                message: "User is not Active in Session, Login to Access this."
+            }
+        });
+    }
+}
