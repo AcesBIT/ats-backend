@@ -53,28 +53,28 @@ app.use(session({
 app.get('/', (req, res) => {
     res.render("index");
 });
-app.get('/adminlogin', (req, res)=>{
-    if(req.session.isAuth){
+app.get('/adminlogin', (req, res) => {
+    if (req.session.isAuth) {
         res.redirect("/admin");
-    }else{
+    } else {
         res.render("adminLogin");
     }
 });
-app.get('/schoollogin', (req, res)=>{
-    if(req.session.isValidSchool){
+app.get('/schoollogin', (req, res) => {
+    if (req.session.isValidSchool) {
         res.redirect("/official");
-    }else{
+    } else {
         res.render("schoolLogin");
     }
 });
-app.get('/teacherlogin', (req, res)=>{
-    if(req.session.isTeacher){
+app.get('/teacherlogin', (req, res) => {
+    if (req.session.isTeacher) {
         res.redirect("/teacher");
-    }else{
+    } else {
         res.render("teacherLogin");
     }
 });
-app.get('/studentlogin', (req, res)=>{
+app.get('/studentlogin', (req, res) => {
     res.render("studentLogin");
 });
 
@@ -82,8 +82,8 @@ app.get('/studentlogin', (req, res)=>{
 
 
 //admin-site
-app.get('/admin', isAuth, (req, res)=>{
-    res.render("admin", {userName: req.session.userName});
+app.get('/admin', isAuth, (req, res) => {
+    res.render("admin", { userName: req.session.userName });
 });
 app.get('/admin/schoolregister', isAuth, (req, res) => {
     res.render("schoolRegister");
@@ -95,30 +95,30 @@ app.get('/admin/adminregister', isAuth, (req, res) => {
 
 
 //school-site
-app.get('/official', isValidSchool, (req, res)=>{
-    res.render("school", {userName: req.session.userName});
+app.get('/official', isValidSchool, (req, res) => {
+    res.render("school", { userName: req.session.userName });
 });
-app.get('/official/studentRegister', isAuth, (req, res)=>{
+app.get('/official/studentRegister', isAuth, (req, res) => {
     res.render("studentRegister");
 });
-app.get('/official/teacherRegister', isAuth, (req, res)=>{
+app.get('/official/teacherRegister', isAuth, (req, res) => {
     res.render("teacherRegister");
 });
 
 
 //teacher-site
-app.get('/teacher',  isTeacher, (req, res)=>{
-    res.render("teacher", {userName: req.session.userName});
+app.get('/teacher', isTeacher, (req, res) => {
+    res.render("teacher", { userName: req.session.userName });
 });
-app.get('/teacher/attendancelist', isTeacher, (req, res)=>{
+app.get('/teacher/attendancelist', isTeacher, (req, res) => {
     const studentList = [];
-    res.render("attendanceList", {userName: req.session.userName, list: studentList});
+    res.render("attendanceList", { userName: req.session.userName, list: studentList });
 });
-app.post('/teacher/attendance/filter', isTeacher, async(req, res)=>{
+app.post('/teacher/attendance/filter', isTeacher, async (req, res) => {
 
-    const studentList = await Attendance.findOne({date: req.body.date, schoolId:req.session.schoolId});
+    const studentList = await Attendance.findOne({ date: req.body.date, schoolId: req.session.schoolId });
 
-    if(!studentList){
+    if (!studentList) {
         res.redirect("/teacher/attendancelist");
     }
 
@@ -127,18 +127,15 @@ app.post('/teacher/attendance/filter', isTeacher, async(req, res)=>{
 
     // res.send("running");
     console.log(req.body.class);
-    for(var i = 0; i<currentClassList.length; i++){
-        if(currentClassList[i].class==req.body.class){
+    for (var i = 0; i < currentClassList.length; i++) {
+        if (currentClassList[i].class == req.body.class) {
             list.push(currentClassList[i]);
         }
-    }   
+    }
 
     console.log(list);
-    res.render("attendanceList", {userName: req.session.userName, date: req.body.date, list: list});
+    res.render("attendanceList", { userName: req.session.userName, date: req.body.date, list: list });
 });
-
-
-
 
 
 

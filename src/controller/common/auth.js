@@ -1,7 +1,7 @@
-exports.isAuth = (req, res, next)=>{
-    if(req.session.isAuth){
+exports.isAuth = (req, res, next) => {
+    if (req.session.isAuth) {
         next();
-    }else{
+    } else {
         res.status(404).json({
             detail: {
                 title: "Error !",
@@ -11,10 +11,10 @@ exports.isAuth = (req, res, next)=>{
     }
 }
 
-exports.isValidSchool = (req, res, next)=>{
-    if(req.session.isValidSchool){
+exports.isValidSchool = (req, res, next) => {
+    if (req.session.isValidSchool) {
         next();
-    }else{
+    } else {
         res.status(404).json({
             detail: {
                 title: "Error!",
@@ -24,10 +24,10 @@ exports.isValidSchool = (req, res, next)=>{
     }
 }
 
-exports.isTeacher = (req, res, next)=>{
-    if(req.session.isTeacher){
+exports.isTeacher = (req, res, next) => {
+    if (req.session.isTeacher) {
         next();
-    }else{
+    } else {
         res.status(404).json({
             detail: {
                 title: "Error !",

@@ -1,0 +1,207 @@
+<!-- http://127.0.0.1:5500/Html-Files/Site-Pages/student-site.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/Images/Logo/favicon-32x32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Student Site Page" />
+    <title>Student Site</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="/CSS files/Site-Pages/site.css" />
+    <link rel="stylesheet" href="/CSS files/Site-Pages/student-site.css" />
+
+    <!-- Bootstrap cdns -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- JQuery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <!-- Site Navbar -->
+    <nav class="site-navbar">
+
+        <div class="site-navbar-left">
+
+            <!-- Site Vector -->
+            <img class="site-vector" src="/Images/Login Vectors/Student-Sign-In.png" alt="" />
+
+            <!-- Site Title -->
+            <label class="site-title">STUDENT</label>
+        </div>
+
+        <div class="site-navbar-right">
+            <form id="logoutForm" action="/logout" method="post">
+                <div class="logout-btn" onclick="homePage()">
+
+                    <!-- Logout Vector -->
+                    <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
+
+                    <!-- Logout Text -->
+                    <p class="logout-text">Sign Out</p>
+                    <input name="userName" type="hidden" value="<%= userName %>">
+                </div>
+            </form>
+        </div>
+    </nav>
+
+
+    <!-- Student Content Area -->
+    <div class="container student-content-area">
+        <div class="student-details">
+
+            <!-- Student Image -->
+            <img class="student-image" src="<%= studentData.image %>" alt="">
+
+            <!-- Student Details -->
+            <div class="student-info">
+
+                <!-- First row -->
+                <div class="align-row">
+
+                    <!-- Student Name -->
+                    <div class="w50">
+                        <div class="student-info-section margin">
+                            <div class="student-info-text">Name</div>
+                            <div id="name" class="student-info-data">
+                                <%= studentData.name %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Email -->
+                    <div class="w50">
+                        <div class="student-info-section">
+                            <div class="student-info-text">Email</div>
+                            <div id="email" class="student-info-data">
+                                <%= studentData.email %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second row -->
+                <div class="align-row">
+                    <div class="w33">
+                        <!-- Student Class -->
+                        <div class="student-info-section margin">
+                            <div class="student-info-text">Class</div>
+                            <div id="class" class="student-info-data">
+                                <%= studentData.class %>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Student DOB -->
+                    <div class="w33">
+                        <div class="student-info-section margin">
+                            <div class="student-info-text">Date of Birth</div>
+                            <div id="dob" class="student-info-data">
+                                <%= studentData.dob %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student YOA -->
+                    <div class="w33">
+                        <div class="student-info-section margin">
+                            <div class="student-info-text">Year of Admission</div>
+                            <div id="yoa" class="student-info-data">
+                                <%= studentData.yOA %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Third row -->
+                <div class="align-row">
+
+                    <!-- Student Guardian Name -->
+                    <div class="w50">
+                        <div class="student-info-section margin">
+                            <div class="student-info-text">Guardian Name</div>
+                            <div id="guardName" class="student-info-data">
+                                <%= studentData.guardianName %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Phone -->
+                    <div class="w50">
+                        <div class="student-info-section">
+                            <div class="student-info-text">Phone</div>
+                            <div id="phone" class="student-info-data">
+                                <%= studentData.phone %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Address -->
+                <div class="student-info-section">
+                    <div class="student-info-text">Address</div>
+                    <div id="address" class="student-info-data">
+                        <%= studentData.address %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="statistics">
+            <div class="circular-progress-bar">
+                <div class="outer">
+                    <div class="inner">
+                        <div id="percentage" class="percentage-value"></div>
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                    <defs>
+                        <linearGradient id="GradientColor">
+                            <stop offset="0%" stop-color="#654dd3" />
+                            <stop offset="100%" stop-color="#7863d8" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                </svg>
+            </div>
+
+            <!-- Present Stats -->
+            <div class="statistics-box">
+                <div class="statistics-text">Your Attendance</div>
+                <div id="present" class="statistics-value">
+                    <%= studentPresentDays %>
+                </div>
+            </div>
+
+            <!-- Total number of days -->
+            <div class="statistics-box">
+                <div class="statistics-text">Total Number of Days</div>
+                <div id="present" class="statistics-value">
+                    <%= schoolDay %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <!-- JS Files -->
+    <script src="../../JS Files/index.js"></script>
+    <script src="../../JS Files/site.js"></script>
+    <script src="../../JS Files/Site-Pages/student-site.js"></script>
+</body>
+
+</html>
