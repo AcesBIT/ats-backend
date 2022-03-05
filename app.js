@@ -13,6 +13,8 @@ const { isAuth, isValidSchool, isTeacher } = require("./src/controller/common/au
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
 const { postStudentLogin } = require("./src/controller/student/studentController");
 const { postTeacherLogin } = require("./src/controller/teacher/teacherController");
+const { Student } = require("./src/model/studentModel");
+const { Attendance } = require("./src/model/attendanceModel");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -108,8 +110,27 @@ app.get('/official/teacherRegister', isAuth, (req, res)=>{
 app.get('/teacher',  isTeacher, (req, res)=>{
     res.render("teacher", {userName: req.session.userName});
 });
-app.get('/teacher/attendancelist', (req, res)=>{
-    res.render("attendanceList", {userName: req.session.userName});
+app.get('/teacher/attendancelist', isTeacher, (req, res)=>{
+    const studentList = [];
+    res.render("attendanceList", {userName: req.session.userName, list: studentList});
+});
+app.post('/teacher/attendance/filter', isTeacher, async(req, res)=>{
+
+    const studentList = await Attendance.findOne({date: req.body.date, schoolId:req.session.schoolId});
+
+    const currentClassList = studentList.studentList;
+    let list = [];
+
+    // res.send("running");
+    console.log(req.body.class);
+    for(var i = 0; i<currentClassList.length; i++){
+        if(currentClassList[i].class==req.body.class){
+            list.push(currentClassList[i]);
+        }
+    }   
+
+    console.log(list);
+    res.render("attendanceList", {userName: req.session.userName, date: req.body.date, list: list});
 });
 
 

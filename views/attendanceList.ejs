@@ -51,38 +51,36 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="teacherSite()" />
-    </div>
 
     <!-- Date and Class Input Area -->
-    <div class="input-area">
+
+    <form class="input-area" action="/teacher/attendance/filter" method="post">
+
         <!-- Date -->
         <div class="input-box">
             <div class="attendance-input-text">Date:</div>
 
-            <input id="date" type="date" class="attendance-input" onkeydown="" required />
+            <input name="date" id="date" type="date" class="attendance-input" required />
         </div>
 
         <div class="input-box">
             <div class="attendance-input-text">Class:</div>
 
             <!-- Class Dropdown -->
-            <select id="class" class="attendance-input" required>
+            <select name="class" id="class" class="attendance-input" required>
                 <option value="none" hidden readonly>Select a Class</option>
-                <option value="1">Std I</option>
-                <option value="2">Std II</option>
-                <option value="3">Std III</option>
-                <option value="4">Std IV</option>
-                <option value="5">Std V</option>
-                <option value="6">Std VI</option>
-                <option value="7">Std VII</option>
-                <option value="8">Std VIII</option>
-                <option value="9">Std IX</option>
-                <option value="10">Std X</option>
-                <option value="11">Std XI</option>
-                <option value="12">Std XII</option>
+                <option name="class" value="1">Std I</option>
+                <option name="class" value="2">Std II</option>
+                <option name="class" value="3">Std III</option>
+                <option name="class" value="4">Std IV</option>
+                <option name="class" value="5">Std V</option>
+                <option name="class" value="6">Std VI</option>
+                <option name="class" value="7">Std VII</option>
+                <option name="class" value="8">Std VIII</option>
+                <option name="class" value="9">Std IX</option>
+                <option name="class" value="10">Std X</option>
+                <option name="class" value="11">Std XI</option>
+                <option name="class" value="12">Std XII</option>
             </select>
         </div>
 
@@ -90,6 +88,34 @@
             <button class="button" type="submit" class="btn">Get Attendance</button>
         </div>
 
+    </form>
+
+    <div class="attendance-table-area">
+        <%if(list.length==0){%>
+        <h3>No data Present</h3>
+        <%}else{%>
+        <table class="attendance-table">
+            <tr class="table-heading">
+                <td class="table-col attendance-heading-text">Sl. No.</td>
+                <td class="table-col attendance-heading-text">Unique Id.</td>
+                <td class="table-col attendance-heading-text">Name</td>
+                <td class="table-col attendance-heading-text">Class</td>
+                <td class="table-col attendance-heading-text">Date</td>
+            </tr>
+
+            <% for(var i = 0; i<list.length; i++) { %>
+
+            <tr class="table-row">
+                <td class="align-center table-col attendance-text"><%=i+1%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].uID%></td>
+                <td class="align-left table-col attendance-text"><%=list[i].name%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].class%></td>
+                <td class="align-center table-col attendance-text"><%=date%></td>
+            </tr>
+            <%}%>
+
+        </table>
+        <%}%>
     </div>
 
     <!-- JS File -->
