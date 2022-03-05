@@ -40,15 +40,17 @@
         </div>
 
         <div class="site-navbar-right">
+            <form id="logoutForm" action="/logout" method="post">
+                <div class="logout-btn" onclick="homePage()">
 
-            <div class="logout-btn" onclick="homePage()">
+                    <!-- Logout Vector -->
+                    <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
 
-                <!-- Logout Vector -->
-                <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
-
-                <!-- Logout Text -->
-                <p class="logout-text">Sign Out</p>
-            </div>
+                    <!-- Logout Text -->
+                    <p class="logout-text">Sign Out</p>
+                    <input name="userName" value="<%=userName%>" type="hidden">
+                </div>
+            </form>
         </div>
     </nav>
 
@@ -97,8 +99,8 @@
 
 
     <!-- JS Files -->
-    <script src="/JS Files/index.js"></script>
-    <script src="/JS Files/site.js"></script>
+    <script src="../../JS Files/index.js"></script>
+    <script src="../../JS Files/site.js"></script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ $(document).ready(function () {
 // Returning to the home page
 function homePage() {
   // window.open("../index.html", "_self");
-  document.getElementById("homeform").submit();
+  document.getElementById("logoutForm").submit();
 }
 
 // Going to the Admin sign-in page
@@ -36,5 +36,10 @@ function studentSignIn() {
 }
 
 function schoolReg(){
-  document.getElementById("schoolReg").submit();
+  document.getElementById("schoolreg").submit();
 }
+
+function attendanceList(){
+  document.getElementById("attendancelist").submit();
+}
+

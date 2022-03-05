@@ -40,15 +40,17 @@
         </div>
 
         <div class="site-navbar-right">
+            <form id="logoutForm" action="/logout" method="post">
+                <div class="logout-btn" onclick="homePage()">
 
-            <div class="logout-btn" onclick="homePage()">
+                    <!-- Logout Vector -->
+                    <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
 
-                <!-- Logout Vector -->
-                <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
-
-                <!-- Logout Text -->
-                <p class="logout-text">Sign Out</p>
-            </div>
+                    <!-- Logout Text -->
+                    <p class="logout-text">Sign Out</p>
+                    <input name="userName" value="<%=userName%>" type="hidden">
+                </div>
+            </form>
         </div>
     </nav>
 
@@ -57,14 +59,16 @@
     <div class="container registration-tab-area">
 
         <!-- Attendance By Class -->
-        <div class="registration-tab school-registration" onclick="genAttendance()">
+        <form id="attendancelist" action="/teacher/attendancelist" method="get">
+            <div class="registration-tab school-registration" onclick="attendanceList()">
 
-            <!-- Attendance Vector -->
-            <img src="/Images/Site Vectors/Attendance-Icon.png" alt=""
-                class="registration-vector teacher-site-registration-vector" />
+                <!-- Attendance Vector -->
+                <img src="/Images/Site Vectors/Attendance-Icon.png" alt=""
+                    class="registration-vector teacher-site-registration-vector" />
 
-            <label for="" class="registration-text">ATTENDANCE DETAILS</label>
-        </div>
+                <label for="" class="registration-text">ATTENDANCE DETAILS</label>
+            </div>
+        </form>
 
 
         <!-- Attendance By Unique ID -->
@@ -87,8 +91,8 @@
     </div>
 
     <!-- JS Files -->
-    <script src="/JS Files/index.js"></script>
-    <script src="/JS Files/site.js"></script>
+    <script src="../../JS Files/index.js"></script>
+    <script src="../../JS Files/site.js"></script>
 </body>
 
 </html>

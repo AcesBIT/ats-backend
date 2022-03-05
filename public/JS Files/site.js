@@ -5,7 +5,8 @@ function mainHomePage (){
 
 // Going to the School registration page
 function schoolReg() {
-    window.open(".././Registration-Pages/school-registration.html", "_self");
+    // window.open(".././Registration-Pages/school-registration.html", "_self");
+    document.getElementById()
 }
 
 // Going to the School registration page
