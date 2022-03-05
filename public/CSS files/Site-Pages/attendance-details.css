@@ -44,11 +44,13 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     height: 40px;
     width: 160px;
-    background-color: #FDF1E5;;
+    background-color: #FDF1E5;
+    ;
 }
 
 .button:hover {
-    background-color: #ffebd7;;
+    background-color: #ffebd7;
+    ;
 }
 
 .button:active {
@@ -57,4 +59,61 @@
 
 select {
     border: none;
+}
+
+.attendance-table-area {
+    background-color: #E8EEFE;
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding: 48px 64px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.attendance-table {
+    background-color: #FCFCFC;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.table-heading {
+    background-color: #ffd5ae;
+}
+
+.table-col {
+    outline: none;
+    padding: 6px 32px;
+    width: auto;
+}
+
+.attendance-heading-text {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.attendance-text {
+    font-size: 18px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.table-row:nth-child(odd) {
+    background-color: #FDF1E5;
+}
+
+.table-row:hover {
+    background-color: #ffe5cd
 }

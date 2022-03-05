@@ -27,6 +27,7 @@ exports.postTeacherLogin = async (req, res) => {
     }else if(teacher.password == md5(password)){
         req.session.isTeacher = true;
         req.session.userName = emailId;
+        req.session.schoolId = teacher.schoolId;
         res.redirect("/teacher");
     }else{
         res.status(404).json({
