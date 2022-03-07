@@ -9,7 +9,7 @@ const { process_params } = require("express/lib/router");
 const { postAdminRegister, postAdminLogin, postSchoolRegister } = require("./src/controller/admin/adminController");
 const { postOfficialLogin, postStudentRegister, postTeacherRegister, updateStudentClass } = require("./src/controller/official/schoolController.js");
 const { logoutUser } = require("./src/controller/common/common");
-const { isAuth, isValidSchool, isTeacher } = require("./src/controller/common/auth");
+const { isAuth, isValidSchool, isTeacher, isStudent } = require("./src/controller/common/auth");
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
 const { postStudentLogin } = require("./src/controller/student/studentController");
 const { postTeacherLogin } = require("./src/controller/teacher/teacherController");
@@ -75,7 +75,11 @@ app.get('/teacherlogin', (req, res) => {
     }
 });
 app.get('/studentlogin', (req, res) => {
-    res.render("studentLogin");
+    if (req.session.isStudent) {
+        res.render("studentDashboard", { userName: req.session.userName, studentData: req.session.studentData, percentage: req.session.percentage, schoolDay: req.session.schoolDay, studentPresentDays: req.session.studentPresentDays });
+    } else {
+        res.render("studentLogin");
+    }
 });
 
 
@@ -156,6 +160,9 @@ app.post('/camera/attendance', isAuth, postCameraAttendance);
 
 // Student End Points Are Here--------------------------------->
 app.post('/student/login', postStudentLogin);
+app.get('/student', isStudent, (req, res) => {
+    res.render("studentDashboard");
+});
 
 
 // Teacher End Points Are Here--------------------------------->

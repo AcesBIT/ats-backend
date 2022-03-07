@@ -36,3 +36,16 @@ exports.isTeacher = (req, res, next) => {
         });
     }
 }
+
+exports.isStudent = (req, res, next) => {
+    if (req.session.isStudent) {
+        next();
+    } else {
+        res.status(404).json({
+            detail: {
+                title: "Error !",
+                message: "User is not Active in Session, Login to Access this."
+            }
+        });
+    }
+}

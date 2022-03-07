@@ -22,7 +22,7 @@ exports.postStudentLogin = async (req, res) => {
             }
         });
     } else if (user.dob == password) {
-        req.session.isAuth = true;
+        req.session.isStudent = true;
         req.session.userName = userName;
         let schoolId = "";
         for (let i = 0; i < 8; i++) {
@@ -34,6 +34,10 @@ exports.postStudentLogin = async (req, res) => {
         let studentPresentDays = checkNumber(schoolData, userName);
         let schoolDay = schoolData.length;
         let percentage = calculatePercentage(schoolDay, studentPresentDays);
+        req.session.studentData = user;
+        req.session.percentage = percentage;
+        req.session.schoolDay = schoolDay;
+        req.session.studentPresentDays = studentPresentDays;
         res.render("studentDashboard", { userName: userName, studentData: user, percentage: percentage, schoolDay: schoolDay, studentPresentDays: studentPresentDays });
     } else {
         res.status(404).json({
