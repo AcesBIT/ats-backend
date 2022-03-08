@@ -59,24 +59,27 @@
     <div class="container registration-tab-area">
 
         <!-- Teacher Registration -->
-        <div class="registration-tab school-registration" onclick="teacherReg()">
+        <form id="send" action="/official/teacherRegister" method="get">
+            <div class="registration-tab school-registration" onclick="send()">
 
-            <!-- Teacher Vector -->
-            <img src="/Images/Site Vectors/Teacher-Registration-Form.png" alt=""
-                class="registration-vector teacher-site-registration-vector" />
+                <!-- Teacher Vector -->
+                <img src="/Images/Site Vectors/Teacher-Registration-Form.png" alt=""
+                    class="registration-vector teacher-site-registration-vector" />
 
-            <label for="" class="registration-text">TEACHER REGISTRATION</label>
-        </div>
-
+                <label for="" class="registration-text">TEACHER REGISTRATION</label>
+            </div>
+        </form>
 
         <!-- Student Registration -->
-        <div class="registration-tab admin-registration" onclick="studentReg()">
+        <form id="studentReg" action="/official/studentRegister" method="get">
+            <div class="registration-tab admin-registration" onclick="studentReg()">
 
-            <!-- Student Vector -->
-            <img src="/Images/Site Vectors/Student-Registration-Form.png" alt=""
-                class="registration-vector teacher-site-registration-vector" />
-            <label for="" class="registration-text">STUDENT REGISTRATION</label>
-        </div>
+                <!-- Student Vector -->
+                <img src="/Images/Site Vectors/Student-Registration-Form.png" alt=""
+                    class="registration-vector teacher-site-registration-vector" />
+                <label for="" class="registration-text">STUDENT REGISTRATION</label>
+            </div>
+        </form>
 
 
         <!-- Promoted Students -->

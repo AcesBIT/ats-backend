@@ -43,3 +43,7 @@ function attendanceList(){
   document.getElementById("attendancelist").submit();
 }
 
+function send(){
+  document.getElementById("send").submit();
+}
+
