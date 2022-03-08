@@ -7,7 +7,7 @@ function schoolSite() {
 let dateDropdown = document.getElementById('year');
 
 let currentYear = new Date().getFullYear();
-let earliestYear = currentYear-20;
+let earliestYear = currentYear - 20;
 
 while (currentYear >= earliestYear) {
     let dateOption = document.createElement('option');
@@ -23,7 +23,7 @@ function teacherRegRequest() {
     let email = document.getElementById("email").value;
     let phone = document.getElementById("phone").value;
 
-    if(name && email && phone) {
+    if (name && email && phone) {
         alert("New Teacher has been registered!");
         resetTeacherReg();
     }
@@ -38,7 +38,7 @@ function resetTeacherReg() {
     document.getElementById("email").value = '';
     document.getElementById("phone").value = '';
 }
-  
+
 
 ///Dummy school registration
 function studentRegRequest() {
@@ -52,7 +52,7 @@ function studentRegRequest() {
     let imageFile = document.getElementById("imageFile").value;
     let address = document.getElementById("address").value;
 
-    if(name && classVal && dob && year && email && phone && guardianName && imageFile && address) {
+    if (name && classVal && dob && year && email && phone && guardianName && imageFile && address) {
         alert("New Student has been registered!");
         resetStudentReg();
     }
@@ -73,4 +73,8 @@ function resetStudentReg() {
     document.getElementById("imageFile").value = '';
     document.getElementById("address").value = '';
 }
+
+
+
+
 

@@ -1,20 +1,20 @@
-const {Student}=require("../../model/studentModel.js");
-const {Teacher}=require("../../model/teacherModel.js");
-const {School}=require("../../model/adminModel.js");
-const md5= require("md5");
+const { Student } = require("../../model/studentModel.js");
+const { Teacher } = require("../../model/teacherModel.js");
+const { School } = require("../../model/adminModel.js");
+const md5 = require("md5");
 const nodemailer = require('nodemailer');
 
-exports.postOfficialLogin=async (req,res)=>{
-    const {userName, password} = req.body;
-    const school = await School.findOne({emailId: userName});
-    if(!school){
+exports.postOfficialLogin = async (req, res) => {
+    const { userName, password } = req.body;
+    const school = await School.findOne({ emailId: userName });
+    if (!school) {
         res.status(404).json({
             detail: {
                 title: "Invalid Credentials",
                 message: "School is not Available"
             }
         });
-    }else if(school.password === md5(req.body.password)){
+    } else if (school.password === md5(req.body.password)) {
         req.session.isValidSchool = true;
         req.session.userName = req.body.userName;
         req.session.schoolId = school.schoolId;
@@ -23,7 +23,7 @@ exports.postOfficialLogin=async (req,res)=>{
         //     message: "School Login Sucessful",
         //     session: req.session
         // });
-    }else{
+    } else {
         res.status(404).json({
             detail: {
                 title: "Invalid Username or Password",
@@ -33,33 +33,60 @@ exports.postOfficialLogin=async (req,res)=>{
     }
 }
 
-exports.postStudentRegister=async(req, res)=>{
-    
-    if(!req.body.name || !req.body.class || !req.body.year || !req.body.dob || !req.body.email || !req.body.image || !req.body.address || !req.body.phone || !req.body.guardianName){
+exports.postStudentRegister = async (req, res) => {
+    let missingVal = "";
+    if (!req.body.name || !req.body.class || !req.body.year || !req.body.dob || !req.body.email || !req.body.image || !req.body.address || !req.body.phone || !req.body.guardianName) {
+        if (!req.body.name) {
+            missingVal += "name ";
+        }
+        if (!req.body.class) {
+            missingVal += "class ";
+        }
+        if (!req.body.year) {
+            missingVal += "year ";
+        }
+        if (!req.body.dob) {
+            missingVal += "dob ";
+        }
+        if (!req.body.email) {
+            missingVal += "email ";
+        }
+        if (!req.body.image) {
+            missingVal += "image ";
+        }
+        if (!req.body.address) {
+            missingVal += "address ";
+        }
+        if (!req.body.phone) {
+            missingVal += "phone ";
+        }
+        if (!req.body.guardianName) {
+            missingVal += "guardianName ";
+        }
         res.status(400).json({
-            detail:{
+            detail: {
                 title: "Incomplete Data",
-                message: "All required Data is not receving"
+                message: `All required Data is not receving ${missingVal}`
             }
         });
         return
     }
-    
-    const {email} = req.body;
-    
-    let student = await Student.findOne({email: email});
 
-    if(student){
+    const { email } = req.body;
+
+    let student = await Student.findOne({ email: email });
+
+    if (student) {
         res.status(409).json({
             message: "Student Already Exists"
         });
-    }else if(!student){
+    } else if (!student) {
         //logic for UID generation
         //--------------------------------->
-        let totalStudent = await Student.find({yOA: req.body.year});
+        let totalStudent = await Student.find({ yOA: req.body.year });
         totalLength = totalStudent.length;
         totalLength++;
-        const totalSize = (totalLength < 10) ? "00" + (totalLength) : (totalLength < 100 && totalLength > 9) ? "0" + totalLength: totalLength;
+        const totalSize = (totalLength < 10) ? "00" + (totalLength) : (totalLength < 100 && totalLength > 9) ? "0" + totalLength : totalLength;
         const userId = req.session.schoolId + req.body.year[2] + req.body.year[3] + totalSize;
         //--------------------------------->
 
@@ -71,54 +98,54 @@ exports.postStudentRegister=async(req, res)=>{
             uID: userId,
             dob: req.body.dob,
             email: req.body.email,
-            image: req.body.image, 
+            image: req.body.image[1],
             address: req.body.address,
             phone: req.body.phone,
             guardianName: req.body.guardianName
         });
 
-        await newStudent.save(function(err){
-            if(err){
+        await newStudent.save(function (err) {
+            if (err) {
                 console.log(err);
                 res.status(503).json({
                     message: `Some error occured with ${req.body.name}`
                 })
-            }else{
+            } else {
                 res.status(201).json({
                     message: `Successfully Registered ${req.body.name}`
                 });
             }
         })
 
-    }else{
+    } else {
         res.status(503).json({
             message: "Some error occured"
         });
     }
 }
 
-exports.postTeacherRegister=async(req, res)=>{
-    
-    if(!req.body.email || !req.body.name || !req.body.phone){
+exports.postTeacherRegister = async (req, res) => {
+
+    if (!req.body.email || !req.body.name || !req.body.phone) {
         res.status(400).json({
-            detail:{
+            detail: {
                 title: "Incomplete Data",
                 message: "All required Data is not receving"
             }
         });
         return
     }
-    
-    const {email} = req.body;
+
+    const { email } = req.body;
     const schoolId = req.session.schoolId;
-    let teacher = await Teacher.findOne({email: email});
+    let teacher = await Teacher.findOne({ email: email });
     const password = getPass();
 
-    if(teacher){
+    if (teacher) {
         res.status(409).json({
             message: "Teacher Already Exists"
         });
-    }else if(!teacher){
+    } else if (!teacher) {
         const newTeacher = new Teacher({
             schoolId: schoolId,
             email: req.body.email,
@@ -127,15 +154,15 @@ exports.postTeacherRegister=async(req, res)=>{
             phone: req.body.phone
         });
 
-        await newTeacher.save(function(err){
-            if(err){
+        await newTeacher.save(function (err) {
+            if (err) {
                 console.log(err);
-            }else{
+            } else {
                 const transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                      user: process.env.websiteMail,
-                      pass: process.env.websitePass
+                        user: process.env.websiteMail,
+                        pass: process.env.websitePass
                     }
                 })
                 const mailOptions = {
@@ -148,8 +175,8 @@ exports.postTeacherRegister=async(req, res)=>{
                 Your-username: ${req.body.email}
                 Your-Password: ${password}`
                 };
-            
-                transporter.sendMail(mailOptions, (error, info)=>{
+
+                transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         console.log(error);
                         res.send('error')
@@ -164,28 +191,28 @@ exports.postTeacherRegister=async(req, res)=>{
                 });
             }
         })
-    }else{
+    } else {
         res.status(503).json({
             message: "Some error occured"
         });
     }
 }
 
-exports.updateStudentClass=async(req, res)=>{
+exports.updateStudentClass = async (req, res) => {
     const data = req.body.id;
-    if(!data || !req.body.class){
+    if (!data || !req.body.class) {
         res.status(400).json({
-            detail:{
+            detail: {
                 title: "Incomplete Data",
                 message: "All required Data is not receving"
             }
         });
         return
     }
-    
-    data.forEach (async element => {
+
+    data.forEach(async element => {
         try {
-            await Student.updateOne({uID: element}, {class: req.body.class});
+            await Student.updateOne({ uID: element }, { class: req.body.class });
         } catch (error) {
             res.status(503).json({
                 message: "Some error occured"
@@ -196,19 +223,19 @@ exports.updateStudentClass=async(req, res)=>{
     res.status(201).json({
         message: `Successfully Updated all students`
     })
-    
-    
+
+
 }
 
-function getPass(){
-    let password="";
-    let charList="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    for(var i=0;i<5;i++){
+function getPass() {
+    let password = "";
+    let charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    for (var i = 0; i < 5; i++) {
         let randomNumber = Math.trunc(Math.random() * 52);
-        password=password+charList.charAt(randomNumber);
+        password = password + charList.charAt(randomNumber);
     }
-    for(var i=0;i<3;i++){
-        password=password+Math.trunc(Math.random() * 9)+1;
+    for (var i = 0; i < 3; i++) {
+        password = password + Math.trunc(Math.random() * 9) + 1;
     }
-    return password+'@';
+    return password + '@';
 }
