@@ -21,7 +21,7 @@ function teacherReg() {
 
 // Going to the Student registration page
 function studentReg() {
-    window.open(".././Registration-Pages/student-registration.html", "_self");
+    document.getElementById("studentReg").submit();
 }
 
 // Going to the Attendance details page
@@ -30,6 +30,6 @@ function genAttendance() {
 }
 
 // Going to the Attendance details by UID page
-function uidAttendance() {
-    window.open("./Teacher-Site-Pages/attendance-by-uid.html", "_self");
+function uid() {
+    document.getElementById("uidAttendance").submit();
 }

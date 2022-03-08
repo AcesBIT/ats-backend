@@ -44,14 +44,14 @@
             <!-- Sign In message -->
             <div class="sign-in-text">Register a new Student</div>
 
-            <div>
+            <form action="/official/studentRegister" method="post">
                 <div class="input-field">
                     <div class="row-aligned">
                         <!-- Name -->
                         <div class="w50">
                             <div class="sign-in-input-text">Name</div>
 
-                            <input id="name" type="text" class="sign-in-input row-input row-margin"
+                            <input name="name" id="name" type="text" class="sign-in-input row-input row-margin"
                                 placeholder="Enter name" required>
                         </div>
 
@@ -60,7 +60,7 @@
                             <div class="sign-in-input-text">Class</div>
 
                             <!-- Class Dropdown -->
-                            <select id="class" class="sign-in-input row-input" required>
+                            <select name="class" id="class" class="sign-in-input row-input" required>
                                 <option value="none" hidden readonly>Select a Class</option>
                                 <option value="1">Std I</option>
                                 <option value="2">Std II</option>
@@ -83,14 +83,15 @@
                         <div class="w50">
                             <div class="sign-in-input-text">Date of Birth</div>
 
-                            <!-- <input id="dob" type="date" class="sign-in-input row-input row-margin" onkeydown="return false" required> -->
+                            <input name="dob" id="dob" type="date" class="sign-in-input row-input row-margin"
+                                onkeydown="" required>
                         </div>
 
                         <!-- Year of Admission-->
                         <div class="w50">
                             <div class="sign-in-input-text">Year Of Admission</div>
 
-                            <select id="year" class="sign-in-input row-input" required>
+                            <select name="year" id="year" class="sign-in-input row-input" required>
                                 <option value="none" hidden readonly>Select a Year</option>
                             </select>
                         </div>
@@ -101,7 +102,7 @@
                         <div class="w50">
                             <div class="sign-in-input-text">Email Id</div>
 
-                            <input id="email" type="email" class="sign-in-input row-input row-margin"
+                            <input name="email" id="email" type="email" class="sign-in-input row-input row-margin"
                                 placeholder="Enter email id" required>
                         </div>
 
@@ -109,7 +110,7 @@
                         <div class="w50">
                             <div class="sign-in-input-text">Phone</div>
 
-                            <input id="phone" type="text" class="sign-in-input row-input"
+                            <input name="class" id="phone" type="text" class="sign-in-input row-input"
                                 placeholder="Enter phone number" required>
                         </div>
                     </div>
@@ -119,34 +120,35 @@
                         <div class="w50">
                             <div class="sign-in-input-text">Guardian Name</div>
 
-                            <input id="guardianName" type="text" class="sign-in-input row-input row-margin"
-                                placeholder="Enter guardian name" required>
+                            <input name="guardianName" id="guardianName" type="text"
+                                class="sign-in-input row-input row-margin" placeholder="Enter guardian name" required>
                         </div>
 
                         <!-- Image -->
                         <div class="w50">
                             <div class="sign-in-input-text">Image</div>
 
-                            <input id="imageFile" type="file" accept=".jpg.,.jpeg,.png,.svg"
-                                class="sign-in-input row-input image-input" required>
+                            <input name="image" id="imageFile" type="file" accept=".jpg.,.jpeg,.png,.svg"
+                                class="sign-in-input row-input image-input">
                         </div>
                     </div>
 
                     <!-- Address -->
                     <div class="sign-in-input-text">Address</div>
 
-                    <input id="address" class="sign-in-input" type="text" placeholder="Enter address" required></input>
+                    <input name="address" id="address" class="sign-in-input" type="text" placeholder="Enter address"
+                        required></input>
                 </div>
 
                 <!-- Buttons -->
                 <div id="button-area">
                     <!-- Reset Button -->
-                    <button type="reset" class="button reset-button" onclick="resetStudentReg()">Reset</button>
+                    <button type="reset" class="button reset-button">Reset</button>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="button submit-button" onclick="studentRegRequest()">Submit</button>
+                    <button type="submit" class="button submit-button">Submit</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 

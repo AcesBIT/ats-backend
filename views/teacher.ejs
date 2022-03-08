@@ -72,13 +72,15 @@
 
 
         <!-- Attendance By Unique ID -->
-        <div class="registration-tab admin-registration" onclick="uidAttendance()">
+        <form action="/teacher/attendanceByUid" method="get" id="uidAttendance">
+            <div class="registration-tab admin-registration" onclick="uid()">
 
-            <!-- Admin Vector -->
-            <img src="/Images/Site Vectors/Student-Registration-Form.png" alt=""
-                class="registration-vector teacher-site-registration-vector" />
-            <label for="" class="registration-text">ATTENDANCE DETAILS BY UID</label>
-        </div>
+                <!-- Admin Vector -->
+                <img src="/Images/Site Vectors/Student-Registration-Form.png" alt=""
+                    class="registration-vector teacher-site-registration-vector" />
+                <label for="" class="registration-text">ATTENDANCE DETAILS BY UID</label>
+            </div>
+        </form>
 
         <!--Student classes -->
         <div class="registration-tab student-attendance" onclick="student()">

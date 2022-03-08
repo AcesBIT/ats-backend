@@ -11,8 +11,8 @@ const { postOfficialLogin, postStudentRegister, postTeacherRegister, updateStude
 const { logoutUser } = require("./src/controller/common/common");
 const { isAuth, isValidSchool, isTeacher } = require("./src/controller/common/auth");
 const { postCameraLogin, postCameraAttendance } = require("./src/controller/camera/cameraController");
-const { postStudentLogin } = require("./src/controller/student/studentController");
-const { postTeacherLogin } = require("./src/controller/teacher/teacherController");
+const { postStudentLogin} = require("./src/controller/student/studentController");
+const { postTeacherLogin, postStudentUID } = require("./src/controller/teacher/teacherController");
 const { Student } = require("./src/model/studentModel");
 const { Attendance } = require("./src/model/attendanceModel");
 require("dotenv").config();
@@ -98,10 +98,10 @@ app.get('/admin/adminregister', isAuth, (req, res) => {
 app.get('/official', isValidSchool, (req, res) => {
     res.render("school", { userName: req.session.userName });
 });
-app.get('/official/studentRegister', isAuth, (req, res) => {
+app.get('/official/studentRegister', isValidSchool, (req, res) => {
     res.render("studentRegister");
 });
-app.get('/official/teacherRegister', isAuth, (req, res) => {
+app.get('/official/teacherRegister', isValidSchool, (req, res) => {
     res.render("teacherRegister");
 });
 
@@ -113,6 +113,9 @@ app.get('/teacher', isTeacher, (req, res) => {
 app.get('/teacher/attendancelist', isTeacher, (req, res) => {
     const studentList = [];
     res.render("attendanceList", { userName: req.session.userName, list: studentList });
+});
+app.get('/teacher/attendanceByUid', isTeacher, (req, res)=>{
+    res.render("attendanceByUID", {userName: req.session.userName});
 });
 app.post('/teacher/attendance/filter', isTeacher, async (req, res) => {
 
@@ -127,7 +130,7 @@ app.post('/teacher/attendance/filter', isTeacher, async (req, res) => {
 
     // res.send("running");
     console.log(req.body.class);
-    for (var i = 0; i < currentClassList.length; i++) {
+    for (var i = 0; i < currentClassList.length; i++) { 
         if (currentClassList[i].class == req.body.class) {
             list.push(currentClassList[i]);
         }
@@ -136,7 +139,7 @@ app.post('/teacher/attendance/filter', isTeacher, async (req, res) => {
     console.log(list);
     res.render("attendanceList", { userName: req.session.userName, date: req.body.date, list: list });
 });
-
+app.post('/teacher/attendanceByUid/uID', isTeacher, postStudentUID);
 
 
 // Admin End Points Are Here----------------------------------->
