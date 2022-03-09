@@ -28,10 +28,12 @@
 </head>
 
 <body style="background-color:#d8e8fa;">
-    <div class="container-fluid">
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="schoolSite()" />
-    </div>
+    <form id="back" method="get" action="/official/">
+        <div class="container-fluid">
+            <!-- Back icon -->
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="back()" />
+        </div>
+    </form>
 
     <div class="background">
         <!-- Registration Form -->
@@ -130,8 +132,8 @@
                         <div class="w50">
                             <div class="sign-in-input-text">Image</div>
 
-                            <input name="image" id="imageFile" type="file" onblur="uploadImage()"
-                                accept=".jpg.,.jpeg,.png,.svg" class="sign-in-input row-input image-input">
+                            <input id="imageFile" type="file" onblur="uploadImage()" accept=".jpg.,.jpeg,.png,.svg"
+                                class="sign-in-input row-input image-input">
                         </div>
                     </div>
 
@@ -157,6 +159,7 @@
 
     <!-- JS File -->
     <script src="../../JS Files/Site-Pages/school-site.js"></script>
+    <script src="../../JS Files/index.js"></script>
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyD-OI5yNgHaa2braYa4dGnbXOUGbK2FtkU",
@@ -168,8 +171,9 @@
         };
         firebase.initializeApp(firebaseConfig);
         console.log(firebase);
+
         function uploadImage() {
-            alert("Image Uploading......");
+            // alert("Image Uploading......");
             const ref = firebase.storage().ref();
             const file = document.getElementById("imageFile").file;
             const name = new Date() + '-' + file.name;

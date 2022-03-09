@@ -148,7 +148,7 @@ app.post('/teacher/attendanceByUid/uID', isTeacher, postStudentUID);
 
 // Admin End Points Are Here----------------------------------->
 app.post('/admin/login', postAdminLogin);
-app.post('/admin/register', postAdminRegister);
+app.post('/admin/register', isAuth, postAdminRegister);
 app.post('/admin/schoolregister', isAuth, postSchoolRegister);
 
 //School Officials End Points Are Here----------------------------------->

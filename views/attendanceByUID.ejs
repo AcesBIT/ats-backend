@@ -51,10 +51,12 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="teacherSite()" />
-    </div>
+    <form action="/teacher/" method="get" id="back">
+        <div class="container-fluid">
+            <!-- Back icon -->
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="back()" />
+        </div>
+    </form>
 
     <!-- UID Input Area -->
     <form action="/teacher/attendanceByUid/uID" method="post" class="input-area">

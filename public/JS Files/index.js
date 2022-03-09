@@ -47,3 +47,6 @@ function send(){
   document.getElementById("send").submit();
 }
 
+function back(){
+  document.getElementById("back").submit();
+}

@@ -98,7 +98,7 @@ exports.postStudentRegister = async (req, res) => {
             uID: userId,
             dob: req.body.dob,
             email: req.body.email,
-            image: req.body.image[1],
+            image: req.body.image,
             address: req.body.address,
             phone: req.body.phone,
             guardianName: req.body.guardianName
@@ -111,9 +111,10 @@ exports.postStudentRegister = async (req, res) => {
                     message: `Some error occured with ${req.body.name}`
                 })
             } else {
-                res.status(201).json({
-                    message: `Successfully Registered ${req.body.name}`
-                });
+                alert(`Successfully Registered ${req.body.name}`);
+                // res.status(201).json({
+                //     message: `Successfully Registered ${req.body.name}`
+                // });
             }
         })
 

@@ -25,11 +25,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 
-<body style="background-color:#d3e5ec;">
-    <div class="container-fluid">
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="schoolSite()" />
-    </div>
+<body style="background-color:#d3e5ec;">\
+    <form id="back" action="/official/" method="get">
+        <div class="container-fluid">
+            <!-- Back icon -->
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="back()" />
+        </div>
+    </form>
 
     <div class="background">
         <!-- Registration Form -->
@@ -76,6 +78,7 @@
 
     <!-- JS File -->
     <script src="../../JS Files/Site-Pages/school-site.js"></script>
+    <script src="../../JS Files/index.js"></script>
 </body>
 
 </html>
