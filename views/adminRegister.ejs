@@ -26,10 +26,12 @@
 </head>
 
 <body style="background-color:#C8CFEB;">
-    <div class="container-fluid">
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="adminSite()" />
-    </div>
+    <form action="/admin" method="get" id="back">
+        <div class="container-fluid">
+            <!-- Back icon -->
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="back()" />
+        </div>
+    </form>
 
     <div class="background">
         <!-- Registration Form -->
@@ -43,40 +45,42 @@
 
             <!-- Registration message -->
             <div class="sign-in-text">Register a new Admin</div>
+            <form action="/admin/register" method="post">
+                <div>
+                    <!-- Username -->
+                    <div class="sign-in-input-text">Username</div>
 
-            <div>
-                <!-- Username -->
-                <div class="sign-in-input-text">Username</div>
+                    <input name="userName" id="username" type="text" class="sign-in-input"
+                        placeholder="Enter your username" required>
 
-                <input id="username" type="text" class="sign-in-input" placeholder="Enter your username" required>
+                    <!-- Password -->
+                    <div class="sign-in-input-text">Password</div>
 
-                <!-- Password -->
-                <div class="sign-in-input-text">Password</div>
+                    <input id="password" class="sign-in-input" type="password" placeholder="Enter your password"
+                        required></input>
 
-                <input id="password" class="sign-in-input" type="password" placeholder="Enter your password"
-                    required></input>
+                    <!-- Confirm Password -->
+                    <div class="sign-in-input-text">Password</div>
 
-                <!-- Confirm Password -->
-                <div class="sign-in-input-text">Password</div>
+                    <input name="password" id="re-password" class="sign-in-input" type="password"
+                        placeholder="Re-enter your password" required></input>
 
-                <input id="re-password" class="sign-in-input" type="password" placeholder="Re-enter your password"
-                    required></input>
+                    <!-- Buttons -->
+                    <div id="button">
+                        <!-- Reset Button -->
+                        <button type="reset" class="button reset-button" onclick="resetAdminReg()">Reset</button>
 
-                <!-- Buttons -->
-                <div id="button">
-                    <!-- Reset Button -->
-                    <button type="reset" class="button reset-button" onclick="resetAdminReg()">Reset</button>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="button submit-button"
-                        onclick="adminRegRequest(), resetAdminReg()">Submit</button>
+                        <!-- Submit Button -->
+                        <button type="submit" class="button submit-button">Submit</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
     <!-- JS File -->
     <script src="../../JS Files/Site-Pages/admin-site.js"></script>
+    <script src="../../JS Files/index.js"></script>
 </body>
 
 </html>

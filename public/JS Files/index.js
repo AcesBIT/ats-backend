@@ -50,3 +50,7 @@ function send(){
 function back(){
   document.getElementById("back").submit();
 }
+
+function adminRegister(){
+  document.getElementById("adminRegister").submit();
+}
