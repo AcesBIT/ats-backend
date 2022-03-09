@@ -161,8 +161,9 @@
             <div class="circular-progress-bar">
                 <div class="outer">
                     <div class="inner">
-                        <div id="percentage" class="percentage-value"></div>
+                        <div id="percentage" class="percentage-value"><%=percentage%>%</div>
                     </div>
+                    <input id="studentPercentage" type="hidden" value="<%=percentage%>">
                 </div>
 
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
@@ -172,7 +173,7 @@
                             <stop offset="100%" stop-color="#7863d8" />
                         </linearGradient>
                     </defs>
-                    <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                    <circle id="circle" cx="80" cy="80" r="70" stroke-linecap="round" />
                 </svg>
             </div>
 
