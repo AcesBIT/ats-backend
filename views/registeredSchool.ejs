@@ -1,0 +1,132 @@
+<!-- http://127.0.0.1:5500/Html-Files/Site-Pages/Teacher-Site-Pages/attendance-list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/Images/Logo/favicon-32x32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Attendance Details Page" />
+    <title>Registered School</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="/CSS files/Site-Pages/site.css" />
+    <link rel="stylesheet" href="/CSS files/Site-Pages/teacher-site.css" />
+    <link rel="stylesheet" href="/CSS files/Site-Pages/attendance-details.css" />
+
+    <!-- Bootstrap cdns -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- JQuery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <!-- Site Navbar -->
+    <nav style="background-color: #E8EEFE;" class="site-navbar">
+        <div class="site-navbar-left">
+            <!-- Site Vector -->
+            <img class="site-vector" src="/Images/Site Vectors/Attendance-Icon.png" alt="" />
+
+            <!-- Site Title -->
+            <label class="site-title">REGISTERED SCHOOL</label>
+        </div>
+
+        <div class="site-navbar-right">
+            <form id="logoutForm" action="/logout" method="post">
+                <div class="logout-btn" onclick="homePage()">
+                    <!-- Logout Vector -->
+                    <img src="/Images/Utility Icons/Logout.png" alt="" class="logout-vector" />
+
+                    <!-- Logout Text -->
+                    <p class="logout-text">Sign Out</p>
+                    <input type="hidden" name="userName" value="<%=userName%>">
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <form action="/admin" method="get" id="back">
+        <div class="container-fluid">
+            <!-- Back icon -->
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="back()" />
+        </div>
+    </form>
+
+    <!-- Date and Class Input Area -->
+    <!-- <div class="input-area">
+        Date
+        <div class="input-box">
+            <div class="attendance-input-text">Date:</div>
+
+            <input id="date" type="date" class="attendance-input" required />
+        </div>
+
+        <div class="input-box">
+            <div class="attendance-input-text">Class:</div>
+
+            Class Dropdown
+            <select id="class" class="attendance-input" required>
+                <option value="none" hidden readonly>Select a Class</option>
+                <option value="1">Std I</option>
+                <option value="2">Std II</option>
+                <option value="3">Std III</option>
+                <option value="4">Std IV</option>
+                <option value="5">Std V</option>
+                <option value="6">Std VI</option>
+                <option value="7">Std VII</option>
+                <option value="8">Std VIII</option>
+                <option value="9">Std IX</option>
+                <option value="10">Std X</option>
+                <option value="11">Std XI</option>
+                <option value="12">Std XII</option>
+            </select>
+        </div>
+
+        <div class="input-box">
+            <button class="button" type="submit" class="btn">Get Attendance</button>
+        </div>
+
+    </div> -->
+
+    <div class="attendance-table-area">
+
+        <table class="attendance-table">
+            <tr class="table-heading">
+                <td class="table-col attendance-heading-text">Sl. No.</td>
+                <td class="table-col attendance-heading-text">School Id.</td>
+                <td class="table-col attendance-heading-text">School Name</td>
+                <td class="table-col attendance-heading-text">Email</td>
+                <td class="table-col attendance-heading-text">Phone</td>
+                <td class="table-col attendance-heading-text">Address</td>
+                <td class="table-col attendance-heading-text">Pincode</td>
+            </tr>
+
+            <% for(var i = 0; i<list.length; i++) { %>
+
+            <tr class="table-row">
+                <td class="align-center table-col attendance-text"><%=i+1%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].schoolId%></td>
+                <td class="align-left table-col attendance-text"><%=list[i].schoolName%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].emailId%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].phone%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].address.substring(0,25) + "..."%></td>
+                <td class="align-center table-col attendance-text"><%=list[i].pincode%></td>
+            </tr>
+            <%}%>
+
+        </table>
+    </div>
+
+    <!-- JS File -->
+    <script src="../../JS Files/site.js"></script>
+    <script src="../../JS Files/Site-Pages/teacher-site.js"></script>
+    <script src="../../JS Files/index.js"></script>
+</body>
+
+</html>

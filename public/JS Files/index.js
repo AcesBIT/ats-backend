@@ -54,3 +54,7 @@ function back(){
 function adminRegister(){
   document.getElementById("adminRegister").submit();
 }
+
+function schoolList(){
+  document.getElementById("schoolList").submit();
+}

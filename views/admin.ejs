@@ -82,13 +82,15 @@
         </form>
 
         <!-- Registered Schools -->
-        <div class="registration-tab registered-school" onclick="schoolList()">
+        <form id="schoolList" action="/admin/registeredSchool" method="get">
+            <div class="registration-tab registered-school" onclick="schoolList()">
 
-            <!-- Admin Vector -->
-            <img src="/Images/Site Vectors/Registered-Schools.png" alt=""
-                class="registration-vector registered-school-vector" />
-            <label for="" class="registration-text">REGISTERED SCHOOLS</label>
-        </div>
+                <!-- Admin Vector -->
+                <img src="/Images/Site Vectors/Registered-Schools.png" alt=""
+                    class="registration-vector registered-school-vector" />
+                <label for="" class="registration-text">REGISTERED SCHOOLS</label>
+            </div>
+        </form>
     </div>
 
     <!-- JS Files -->

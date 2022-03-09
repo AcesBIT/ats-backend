@@ -15,6 +15,7 @@ const { postStudentLogin} = require("./src/controller/student/studentController"
 const { postTeacherLogin, postStudentUID } = require("./src/controller/teacher/teacherController");
 const { Student } = require("./src/model/studentModel");
 const { Attendance } = require("./src/model/attendanceModel");
+const { School } = require("./src/model/adminModel");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -94,6 +95,11 @@ app.get('/admin/schoolregister', isAuth, (req, res) => {
 });
 app.get('/admin/adminregister', isAuth, (req, res) => {
     res.render("adminRegister");
+});
+app.get('/admin/registeredSchool', isAuth, async(req, res)=>{
+
+    var schoolList = await School.find({});
+    res.render("registeredSchool", {userName:req.session.userName, list: schoolList});
 });
 
 
