@@ -26,10 +26,12 @@
 </head>
 
 <body style="background-color:#D9E3FC;">
-    <div class="container-fluid">
-        <!-- Back icon -->
-        <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="adminSite()" />
-    </div>
+    <form action="/admin" method="get" id="back">
+        <div class="container-fluid">
+            <!-- Back icon -->
+            <img class="back-icon" src="/Images/Utility Icons/Back.png" alt="" onclick="back()" />
+        </div>
+    </form>
 
     <div class="background">
         <!-- Registration Form -->
@@ -104,6 +106,7 @@
 
     <!-- JS File -->
     <script src="../../JS Files/Site-Pages/admin-site.js"></script>
+    <script src="../../JS Files/index.js"></script>
 </body>
 
 </html>

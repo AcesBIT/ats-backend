@@ -72,13 +72,14 @@
 
 
         <!-- Admin Registration -->
-        <div class="registration-tab admin-registration" onclick="adminReg()">
+        <form action="/admin/adminregister" method="get" id="adminRegister">
+            <div class="registration-tab admin-registration" onclick="adminRegister()">
 
-            <!-- Admin Vector -->
-            <img src="/Images/Site Vectors/Admin-Registration.png" alt="" class="registration-vector" />
-            <label for="" class="registration-text">ADMIN REGISTRATION</label>
-        </div>
-
+                <!-- Admin Vector -->
+                <img src="/Images/Site Vectors/Admin-Registration.png" alt="" class="registration-vector" />
+                <label for="" class="registration-text">ADMIN REGISTRATION</label>
+            </div>
+        </form>
 
         <!-- Registered Schools -->
         <div class="registration-tab registered-school" onclick="schoolList()">
