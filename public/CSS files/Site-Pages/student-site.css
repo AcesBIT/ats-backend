@@ -1,22 +1,22 @@
 .site-navbar {
-  background-color: #c6c0e2;
+    background-color: #c6c0e2;
 }
 
 .logout-btn:hover {
-  background-color: #c2bae7;
+    background-color: #c2bae7;
 }
 
 .logout-btn:active {
-  background-color: #baafeb;
+    background-color: #baafeb;
 }
 
 .student-content-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin-top: 47px;
 }
 
 .student-details {
@@ -126,7 +126,7 @@ circle {
     stroke: url(#GradientColor);
     stroke-width: 20px;
     /* Max value is 472 -> 100% */
-    stroke-dasharray: 472; 
+    stroke-dasharray: 472;
     /* calculating the chakki according to the value */
     /* Max value is 472 -> 100% */
     stroke-dashoffset: 472;
@@ -139,13 +139,13 @@ svg {
     left: 0;
 }
 
-@keyframes anim {
+/* @keyframes anim {
     100% {
-        stroke-dashoffset: 94.4; 
-        /* 0 means nothing is hiding, i.e. full svg is visible */
-        /* 472 means nothing is visible */
+        stroke-dashoffset: 42;
+        0 means nothing is hiding, i.e. full svg is visible
+        472 means nothing is visible
     }
-}
+} */
 
 .statistics-box {
     background-color: #FCFCFC;
