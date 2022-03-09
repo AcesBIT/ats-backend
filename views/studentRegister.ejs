@@ -132,7 +132,7 @@
                         <div class="w50">
                             <div class="sign-in-input-text">Image</div>
 
-                            <input id="imageFile" type="file" onblur="uploadImage()" accept=".jpg.,.jpeg,.png,.svg"
+                            <input id="imageFile" type="file" onblur="uploadImage()" accept=".jpg,.jpeg,.png,.svg"
                                 class="sign-in-input row-input image-input">
                         </div>
                     </div>
@@ -175,7 +175,7 @@
         function uploadImage() {
             // alert("Image Uploading......");
             const ref = firebase.storage().ref();
-            const file = document.getElementById("imageFile").file;
+            const file = document.getElementById("imageFile").files[0];
             const name = new Date() + '-' + file.name;
             const metadata = {
                 contentType: file.type

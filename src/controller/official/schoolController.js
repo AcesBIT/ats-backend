@@ -111,7 +111,7 @@ exports.postStudentRegister = async (req, res) => {
                     message: `Some error occured with ${req.body.name}`
                 })
             } else {
-                alert(`Successfully Registered ${req.body.name}`);
+                res.send(alert("Successfully Registered " + req.body.name));
                 // res.status(201).json({
                 //     message: `Successfully Registered ${req.body.name}`
                 // });
