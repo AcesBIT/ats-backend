@@ -99,7 +99,7 @@ app.get('/admin/adminregister', isAuth, (req, res) => {
 app.get('/admin/registeredSchool', isAuth, async(req, res)=>{
 
     var schoolList = await School.find({});
-    res.render("registeredSchool", {userName:req.session.userName, list: schoolList});
+    res.render("registeredSchool", {userName: req.session.userName, list: schoolList});
 });
 
 
