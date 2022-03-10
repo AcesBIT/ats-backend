@@ -11,6 +11,7 @@
     max-width: 489px;
     max-height: 495px;
     padding-right: 40px;
+    margin-right: 40px;
 }
 
 .about-content {
@@ -23,6 +24,7 @@
 .about-heading {
     font-size: 36px;
     font-weight: 600;
+    margin-bottom: 0px;
     padding-bottom: 10px;
 }
 
@@ -43,7 +45,6 @@
     }
 
     .about-content {
-        padding-top: 20px; 
+        padding-top: 20px;
     }
 }
-
